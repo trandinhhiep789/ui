@@ -111,5 +111,9 @@
     "allowSyntheticDefaultImports": true,
     "emitDeclarationOnly": true,
     "rootDir": "src"
-  }
+  },
+  "exclude": [
+    "src/stories",
+    "**/*.stories.tsx"
+  ]
 }
