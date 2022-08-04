@@ -1,29 +1,70 @@
 import React from "react";
-import "./Button.scss"
+import "./Button.css"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
 interface ButtonProps {
+  /**
+   * Màu chính button
+   */
   primary?: boolean;
-  size?: 'small' | 'medium' | 'large';
-  label: string
+  /**
+   * Thuộc tính block của button
+   */
+  block?: boolean;
+  /**
+   * Thuộc tính đổi màu backgroundColor
+   */
+  backgroundColor?: string;
+  /**
+   * Kiểu loại button
+   */
+  typeBtn?: 'outline' | 'defaul';
+  /**
+   * Kích cỡ button
+   */
+  size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+  /**
+   * Nội dung button
+   */
+  label: string,
+  /**
+   * Icon button
+   */
+  icon?: string,
+  /**
+   * Một số màu mặc định
+   */
+  color?: 'green' | 'red' | 'yellow' | 'purple' | 'green-outline' | 'red-outline' | 'yellow-outline' | 'purple-outline'
 }
 
-const defaultBtn:string = "text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-
-const alternativeBtn:string = "py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-
-export const Button = ({
+const Button = ({
   primary = false,
+  block = false,
+  typeBtn = 'defaul',
   size = 'medium',
+  backgroundColor,
+  color,
   label,
+  icon,
   ...props
 }: ButtonProps) => {
-  const mode = primary ? defaultBtn : alternativeBtn;
-  return 
-  (<button
+  const mode = primary ? 'defaultBtn' : 'alternativeBtn';
+  const modeblock = block ? "displayBlock" : ""
+  const typeButton = typeBtn === 'outline' ? 'defaultBtnOutline' : mode
+  return <button
     type="button"
-    className={mode}
+    className={[typeButton, size, color, typeBtn, modeblock].join(' ')}
+    style={{ backgroundColor }}
     {...props}
   >
     {label}
-  </button>)
+    <FontAwesomeIcon icon={solid('user-secret')} />
+    {/* <FontAwesomeIcon icon={solid('fa-brands')} /> */}
+    {/* <FontAwesomeIcon icon="fa-brands fa-500px" /> */}
+    {/* <FontAwesomeIcon icon={brands('twitter')} /> */}
+  </button>
 };
+
+export default Button
