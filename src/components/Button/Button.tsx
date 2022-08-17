@@ -1,8 +1,11 @@
 import React from "react";
+
 import "./Button.css"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid, regular } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { library, IconName } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+library.add(fas)
 
 interface ButtonProps {
   /**
@@ -14,13 +17,21 @@ interface ButtonProps {
    */
   block?: boolean;
   /**
+   * Thuộc tính disable của button
+   */
+  disable?: boolean;
+  /**
+   * Thuộc tính loading của button
+   */
+  loading?: boolean;
+  /**
    * Thuộc tính đổi màu backgroundColor
    */
   backgroundColor?: string;
   /**
    * Kiểu loại button
    */
-  typeBtn?: 'outline' | 'defaul';
+  type?: 'outline' | 'defaul';
   /**
    * Kích cỡ button
    */
@@ -38,33 +49,55 @@ interface ButtonProps {
    */
   color?: 'green' | 'red' | 'yellow' | 'purple' | 'green-outline' | 'red-outline' | 'yellow-outline' | 'purple-outline'
 }
-
+const iconLoading:string = 'fa-solid fa-spinner';
 const Button = ({
   primary = false,
   block = false,
-  typeBtn = 'defaul',
+  disable = false,
+  loading = false,
+  type = 'defaul',
   size = 'medium',
   backgroundColor,
   color,
   label,
-  icon,
+  icon="",
   ...props
 }: ButtonProps) => {
   const mode = primary ? 'defaultBtn' : 'alternativeBtn';
   const modeblock = block ? "displayBlock" : ""
-  const typeButton = typeBtn === 'outline' ? 'defaultBtnOutline' : mode
-  return <button
+  const modedisable = disable ? "disable" : ""
+  const modeloading = loading ? "loading" : ""
+  const typeButton = type === 'outline' ? 'defaultBtnOutline' : mode
+  return <div>
+    <button
     type="button"
-    className={[typeButton, size, color, typeBtn, modeblock].join(' ')}
+    className={[typeButton, color, size,  modeblock, modeloading, modedisable].join(' ')}
     style={{ backgroundColor }}
     {...props}
   >
+    {loading ? 
+      <svg className={ loading ? "animate-spin h-5 w-5 mr-3" : "" } viewBox="0 0 24 24">
+        <FontAwesomeIcon className={label != "" ? "mr-2" : ""} icon={iconLoading as IconName} />
+      </svg> :
+      <FontAwesomeIcon className={label != "" ? "mr-2" : ""} icon={icon as IconName} />
+    }
     {label}
-    <FontAwesomeIcon icon={solid('user-secret')} />
-    {/* <FontAwesomeIcon icon={solid('fa-brands')} /> */}
-    {/* <FontAwesomeIcon icon="fa-brands fa-500px" /> */}
-    {/* <FontAwesomeIcon icon={brands('twitter')} /> */}
   </button>
+  <button
+    type="button"
+    className={[typeButton, color, size,  modeblock, modeloading, modedisable].join(' ')}
+    style={{ backgroundColor }}
+    {...props}
+  >
+    {loading ? 
+      <svg className={ loading ? "animate-spin h-5 w-5 mr-3" : "" } viewBox="0 0 24 24">
+        <FontAwesomeIcon className={label != "" ? "mr-2" : ""} icon={iconLoading as IconName} />
+      </svg> :
+      <FontAwesomeIcon className={label != "" ? "mr-2" : ""} icon={icon as IconName} />
+    }
+    {label}
+  </button>
+  </div>
 };
 
 export default Button

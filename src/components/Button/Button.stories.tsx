@@ -28,3 +28,38 @@ OutlineButton.args = {
   size: 'medium',
   typeBtn: 'outline'
 };
+
+export const ExtraSmallButton = Template.bind({});
+ExtraSmallButton.args = {
+  primary: true,
+  label: 'Outline Button',
+  size: 'extra-small'
+};
+
+export const SmallButton = Template.bind({});
+SmallButton.args = {
+  primary: true,
+  label: 'Outline Button',
+  size: 'small'
+};
+
+export const MediumButton = Template.bind({});
+MediumButton.args = {
+  primary: true,
+  label: 'Outline Button',
+  size: 'medium'
+};
+
+export const LargeButton = Template.bind({});
+LargeButton.args = {
+  primary: true,
+  label: 'Outline Button',
+  size: 'large'
+};
+
+export const ExtraLargeeButton = Template.bind({});
+ExtraLargeeButton.args = {
+  primary: true,
+  label: 'Outline Button',
+  size: 'extra-large'
+};
