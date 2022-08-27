@@ -1,52 +1,50 @@
 /* button size */
-.extra-small{
-    @apply py-2 px-3 text-xs !important;
+.extra-small {
+  @apply py-2 px-3 text-xs !important;
 }
-.small{
-    @apply py-2 px-3 text-sm !important;
+.small {
+  @apply py-2 px-3 text-sm !important;
 }
-.medium{
-    @apply px-5 py-2.5 text-sm !important;
+.medium {
+  @apply px-5 py-2.5 text-sm !important;
 }
-.large{
-    @apply py-3 px-5 text-base !important;
+.large {
+  @apply py-3 px-5 text-base !important;
 }
-.extra-large{
-    @apply px-6 py-3.5 text-base !important;
+.extra-large {
+  @apply px-6 py-3.5 text-base !important;
 }
 
 /* button block */
-.displayBlock{
-    display: block;
-    width: 100%;
+.displayBlock {
+  display: block;
+  width: 100%;
 }
 
 /* button disable */
-.disable{
-    @apply cursor-not-allowed opacity-30
+.disable {
+  @apply cursor-not-allowed opacity-30;
 }
 
 /* button loading */
-.loading{
-    @apply cursor-wait opacity-30
+.loading {
+  @apply cursor-wait opacity-30;
 }
 
 /* default alternative Outline button */
 .defaultBtn {
-    @apply 
-    px-5 py-2.5 mr-2 mb-2
+  @apply px-5 py-2.5 mr-2 mb-2
     text-white font-medium text-sm
     bg-blue-700 
 
     hover:bg-blue-800 
     focus:ring-4 focus:ring-blue-300 focus:outline-none 
     dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
-    rounded-lg   
+    rounded-lg;
 }
 
 .alternativeBtn {
-    @apply 
-    py-2.5 px-5 mr-2 mb-2 
+  @apply py-2.5 px-5 mr-2 mb-2 
     text-sm font-medium text-gray-900 
     bg-white
 
@@ -55,12 +53,11 @@
     dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700
 
     border border-gray-200
-    rounded-lg
+    rounded-lg;
 }
 
 .defaultBtnOutline {
-    @apply
-    px-5 py-2.5 mr-2 mb-2 
+  @apply px-5 py-2.5 mr-2 mb-2 
     text-blue-700 font-medium text-sm text-center 
 
     hover:text-white hover:bg-blue-800 
@@ -68,88 +65,80 @@
     dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800
 
     border border-blue-700
-    rounded-lg
+    rounded-lg;
 }
 
 /* color */
-.green{
-    @apply 
-    text-white text-center font-medium
+.green {
+  @apply text-white text-center font-medium
     bg-green-700
 
     hover:bg-green-800 
     focus:outline-none focus:ring-4 focus:ring-green-300 
     dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800   
-    rounded-lg
+    rounded-lg;
 }
-.red{
-    @apply 
-    text-white text-center font-medium
+.red {
+  @apply text-white text-center font-medium
     bg-red-700 
 
     hover:bg-red-800 focus:ring-4 
     focus:outline-none focus:ring-red-300 
     dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900
-    rounded-lg
+    rounded-lg;
 }
-.yellow{
-    @apply 
-    text-white text-center font-medium
+.yellow {
+  @apply text-white text-center font-medium
     bg-yellow-400 
 
     hover:bg-yellow-500 
     focus:outline-none focus:ring-4 focus:ring-yellow-300 
     dark:focus:ring-yellow-900
-    rounded-lg 
+    rounded-lg;
 }
-.purple{
-    @apply 
-    text-white text-center font-medium
+.purple {
+  @apply text-white text-center font-medium
     bg-purple-700 
 
     hover:bg-purple-800 
     focus:outline-none focus:ring-4 focus:ring-purple-300 
     dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
-    rounded-lg 
+    rounded-lg;
 }
 
-.green-outline{
-    @apply 
-    text-center text-green-700 font-medium 
+.green-outline {
+  @apply text-center text-green-700 font-medium 
     hover:text-white hover:bg-green-800 
     focus:ring-4 focus:outline-none focus:ring-green-300 
     dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800
     
     border border-green-700 
-    rounded-lg 
+    rounded-lg;
 }
-.red-outline{
-    @apply 
-    text-red-700 font-medium text-center 
+.red-outline {
+  @apply text-red-700 font-medium text-center 
     hover:text-white hover:bg-red-800 
     focus:ring-4 focus:outline-none focus:ring-red-300 
     dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900
     
     border border-red-700 
-    rounded-lg 
+    rounded-lg;
 }
-.yellow-outline{
-    @apply 
-    text-yellow-400 font-medium text-center 
+.yellow-outline {
+  @apply text-yellow-400 font-medium text-center 
     hover:text-white hover:bg-yellow-500 
     focus:ring-4 focus:outline-none focus:ring-yellow-300 
     dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900
 
     border border-yellow-400 
-    rounded-lg 
+    rounded-lg;
 }
-.purple-outline{
-    @apply 
-    text-purple-700 text-center font-medium 
+.purple-outline {
+  @apply text-purple-700 text-center font-medium 
     hover:text-white hover:bg-purple-800 
     focus:ring-4 focus:outline-none focus:ring-purple-300 
     dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900
 
     border border-purple-700 
-    rounded-lg 
+    rounded-lg;
 }

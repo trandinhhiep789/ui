@@ -1,37 +1,35 @@
-.defaultModal{
-  @apply 
-  overflow-y-auto overflow-x-hidden 
+.defaultModal {
+  @apply overflow-y-auto overflow-x-hidden 
   fixed top-0 right-0 left-0 
   z-50 
   w-full 
 
-  md:inset-0 md:h-full 
+  md:inset-0 md:h-full;
 }
 
 /* placement */
-.center{
-  @apply justify-center items-center flex
+.center {
+  @apply justify-center items-center flex;
 }
-.top-left{
-  @apply justify-start items-start flex
+.top-left {
+  @apply justify-start items-start flex;
 }
-.top-right{
-  @apply justify-end items-start flex
+.top-right {
+  @apply justify-end items-start flex;
 }
-.bottom-left{
-  @apply justify-start items-end flex
+.bottom-left {
+  @apply justify-start items-end flex;
 }
-.bottom-right{
-  @apply justify-end items-end flex
+.bottom-right {
+  @apply justify-end items-end flex;
 }
 
-.hidden{
+.hidden {
   display: none !important;
 }
 
-.btnX{
-  @apply 
-  text-gray-400 
+.btnX {
+  @apply text-gray-400 
   bg-transparent 
   hover:bg-gray-200 hover:text-gray-900 
   rounded-lg 
@@ -40,11 +38,10 @@
   p-1.5 ml-auto 
   inline-flex 
   items-center 
-  dark:hover:bg-gray-600 dark:hover:text-white
+  dark:hover:bg-gray-600 dark:hover:text-white;
 }
-.btnOk{
-  @apply 
-  text-white 
+.btnOk {
+  @apply text-white 
   bg-blue-700 
   hover:bg-blue-800 
   focus:ring-4 focus:outline-none focus:ring-blue-300 
@@ -53,11 +50,10 @@
   rounded-lg 
   text-sm text-center 
   px-5 py-2.5 
-  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800
+  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800;
 }
-.btnCancel{
-  @apply 
-  text-gray-500 
+.btnCancel {
+  @apply text-gray-500 
   bg-white 
   hover:bg-gray-100 
   focus:ring-4 focus:outline-none focus:ring-blue-300 
@@ -69,19 +65,19 @@
 
   hover:text-gray-900 
   focus:z-10 
-  dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600
+  dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600;
 }
 
 /* size content modal : 'default' | 'large' | 'extra-large' */
-.default{
+.default {
   @apply max-w-2xl 
-  /* max-width: 42rem; 672px */
+  /* max-width: 42rem; 672px */;
 }
-.large{
+.large {
   @apply max-w-4xl
-  /* max-width: 56rem; 896px */
+  /* max-width: 56rem; 896px */;
 }
-.extra-large{
+.extra-large {
   @apply max-w-7xl
-  /* max-width: 80rem; 1280px */
+  /* max-width: 80rem; 1280px */;
 }

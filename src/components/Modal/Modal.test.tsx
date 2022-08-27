@@ -1,10 +1,10 @@
-// import React from "react";
-// import { render } from "@testing-library/react";
+import React from 'react'
+import { render } from '@testing-library/react'
 
-// import Button from "./Button";
+import Modal from './Modal'
 
-// describe("Button", () => {
-//   test("renders the Button component", () => {
-//     render(<Button label="Hello world!" />);
-//   });
-// });
+describe('Modal', () => {
+  test('renders the Modal component', () => {
+    render(<Modal contentModal="<p>Content modal</p>" />)
+  })
+})
