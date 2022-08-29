@@ -12,7 +12,7 @@ interface ModalProps {
   /** Tiêu đề modal */
   title?: string
   /** Nội dung modal */
-  contentModal?: string
+  content?: string
   /** Text đồng ý */
   okText?: string
   /** Text từ chối */
@@ -28,7 +28,7 @@ const Modal = ({
   title = 'Thông báo',
   okText = 'Ok',
   cancelText = 'Cancel',
-  contentModal = '<p>Content modal</p>',
+  content = '<p>Content modal</p>',
   onOk,
   onCancel,
   size = 'default',
@@ -65,7 +65,7 @@ const Modal = ({
             </div>
             {/* Modal body */}
             <div className="p-6 space-y-6">
-              <div dangerouslySetInnerHTML={{ __html: contentModal }} />
+              <div dangerouslySetInnerHTML={{ __html: content }} />
             </div>
             {/* Modal footer */}
             <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">

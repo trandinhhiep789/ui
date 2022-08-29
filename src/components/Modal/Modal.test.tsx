@@ -5,6 +5,6 @@ import Modal from './Modal'
 
 describe('Modal', () => {
   test('renders the Modal component', () => {
-    render(<Modal contentModal="<p>Content modal</p>" />)
+    render(<Modal content="<p>Content modal</p>" />)
   })
 })

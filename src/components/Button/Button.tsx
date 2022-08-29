@@ -5,7 +5,8 @@ import './Button.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library, IconName } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
-library.add(fas)
+import { far } from '@fortawesome/free-regular-svg-icons'
+library.add(fas, far)
 
 interface ButtonProps {
   /**
@@ -39,7 +40,7 @@ interface ButtonProps {
   /**
    * Nội dung button
    */
-  label: string
+  label?: string
   /**
    * Icon button
    */
@@ -84,21 +85,6 @@ const Button = ({
           <FontAwesomeIcon className={label != '' ? 'mr-2' : ''} icon={icon as IconName} />
         ) : (
           ''
-        )}
-        {label}
-      </button>
-      <button
-        type="button"
-        className={[typeButton, color, size, modeblock, modeloading, modedisable].join(' ')}
-        style={{ backgroundColor }}
-        {...props}
-      >
-        {loading ? (
-          <svg className={loading ? 'animate-spin h-5 w-5 mr-3' : ''} viewBox="0 0 24 24">
-            <FontAwesomeIcon className={label != '' ? 'mr-2' : ''} icon={iconLoading as IconName} />
-          </svg>
-        ) : (
-          <FontAwesomeIcon className={label != '' ? 'mr-2' : ''} icon={icon as IconName} />
         )}
         {label}
       </button>

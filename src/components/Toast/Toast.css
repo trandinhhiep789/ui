@@ -1,0 +1,57 @@
+.toast {
+  @apply w-72 rounded;
+  padding: 0.5rem;
+}
+
+.icon {
+  @apply flex justify-center items-center;
+  width: 15%;
+}
+.contentMessage {
+  @apply flex flex-col justify-center;
+  width: 85%;
+  margin-left: 10px;
+}
+.contentMessage p {
+  word-break: break-word;
+}
+
+.faCircleCheck {
+  @apply text-4xl;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+/* type */
+.success {
+  background-color: #32c682;
+  color: #fff;
+}
+.failure {
+  background-color: #ff5549;
+  color: #fff;
+}
+.warning {
+  background-color: #eebf31;
+  color: #fff;
+}
+.info {
+  background-color: #26c0d3;
+  color: #fff;
+}
+
+/* placement */
+.center {
+  @apply justify-center items-center flex;
+}
+.top-left {
+  @apply justify-start items-start flex;
+}
+.top-right {
+  @apply justify-end items-start flex;
+}
+.bottom-left {
+  @apply justify-start items-end flex;
+}
+.bottom-right {
+  @apply justify-end items-end flex;
+}
