@@ -130,13 +130,6 @@ const Toast = ({ content = 'success', type = 'success', placement = 'bottom-righ
         }
     }
 
-    const Toast = {
-        // open: showToast(type, content)
-        open: (type: any, content: any) => {
-            showToast(type, content)
-        }
-    }
-
     return (
         <div {...props}>
             <div onClick={() => showToast(type, content)}>123</div>

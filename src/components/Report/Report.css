@@ -1,0 +1,131 @@
+.defaultModal {
+    @apply overflow-y-auto overflow-x-hidden 
+  fixed top-0 right-0 left-0 
+  z-50 
+  w-full 
+
+  md:inset-0 md:h-full;
+}
+
+/* placement */
+.center {
+    @apply justify-center items-center flex;
+}
+.top-left {
+    @apply justify-start items-start flex;
+}
+.top-right {
+    @apply justify-end items-start flex;
+}
+.bottom-left {
+    @apply justify-start items-end flex;
+}
+.bottom-right {
+    @apply justify-end items-end flex;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.btnX {
+    @apply text-gray-400 
+  bg-transparent 
+  hover:bg-gray-200 hover:text-gray-900 
+  rounded-lg 
+
+  text-sm 
+  p-1.5 ml-auto 
+  inline-flex 
+  items-center 
+  dark:hover:bg-gray-600 dark:hover:text-white;
+}
+
+.btnCancel {
+    @apply text-gray-500 
+  bg-white 
+  hover:bg-gray-100 
+  focus:ring-4 focus:outline-none focus:ring-blue-300 
+
+  rounded-lg 
+  border border-gray-200 
+  text-sm font-medium 
+  px-5 py-2.5 
+
+  hover:text-gray-900 
+  focus:z-10 
+  dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600;
+}
+
+/* size content modal : 'default' | 'large' | 'extra-large' */
+.default {
+    @apply w-96
+  /* width: 24rem; 384px */;
+}
+.large {
+    @apply max-w-4xl
+  /* max-width: 56rem; 896px */;
+}
+.extra-large {
+    @apply max-w-7xl
+  /* max-width: 80rem; 1280px */;
+}
+
+/* icon type */
+.faCircleCheckReport {
+    @apply text-7xl mb-2;
+    color: #33c682;
+}
+.faCircleXmarkReport {
+    @apply text-7xl mb-2;
+    color: #ff5649;
+}
+.faTriangleExclamationReport {
+    @apply text-7xl mb-2;
+    color: #eebf31;
+}
+.faInfoReport {
+    @apply text-7xl mb-2;
+    color: #26c0d3;
+}
+
+/* button report */
+
+.btnSuccessReport {
+    @apply text-white font-medium rounded-lg text-sm text-center px-4 py-2;
+
+    background-color: #33c682;
+    color: #fff;
+}
+.btnFailureReport {
+    @apply text-white font-medium rounded-lg text-sm text-center px-4 py-2;
+
+    background-color: #ff5549;
+    color: #fff;
+}
+.btnWarningReport {
+    @apply text-white font-medium rounded-lg text-sm text-center px-4 py-2;
+
+    background-color: #eebf31;
+    color: #fff;
+}
+.btnInfoReport {
+    @apply text-white font-medium rounded-lg text-sm text-center px-4 py-2;
+
+    background-color: #26c0d3;
+    color: #fff;
+}
+
+/* bg overlay  */
+.bgSuccessReport {
+    background-color: #32c68233;
+}
+.bgFailureReport {
+    background-color: #ff554933;
+}
+.bgWarningReport {
+    background-color: #eebf3133;
+}
+.bgInfoReport {
+    background-color: #26c0d333;
+}
