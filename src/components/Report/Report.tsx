@@ -108,23 +108,22 @@ const Report = ({
         <div {...props}>
             <div className={[visibleMode, placement].join(' ')}>
                 <div className={['relative px-4 py-3 w-full h-full md:h-auto', size].join(' ')}>
-                    {/* Modal content */}
+                    {/* Report content */}
                     <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        {/* Modal header */}
+                        {/* Report header */}
                         <div className="text-center items-start p-4 rounded-t border-b dark:border-gray-600">
                             <div>{iconType(type)}</div>
                             <h5 className="font-semibold text-gray-900 dark:text-white">{title}</h5>
                         </div>
-                        {/* Modal body */}
+                        {/* Report body */}
                         <div className="px-4 py-3 space-y-6">
                             <p className="break-words" dangerouslySetInnerHTML={{ __html: content }} />
                         </div>
-                        {/* Modal footer */}
+                        {/* Report footer */}
                         <div className="text-right px-4 py-3 space-x-2 rounded-b border-gray-200 dark:border-gray-600">{bgButtonReport(type)}</div>
                     </div>
                 </div>
             </div>
-            {visible && <div className="dark:bg-opacity-80 fixed inset-0 z-40 bgSuccessReport"></div>}
             {visible && bgOverlayReport(type)}
         </div>
     )
