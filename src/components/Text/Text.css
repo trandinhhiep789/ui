@@ -1,0 +1,24 @@
+.text-success {
+    @apply text-lime-500;
+}
+.text-warning {
+    @apply text-orange-500;
+}
+.text-danger {
+    @apply text-orange-700;
+}
+.text-disabled {
+    @apply cursor-not-allowed opacity-30;
+}
+.text-mark {
+    @apply bg-yellow-200;
+}
+.text-code {
+    margin: 0 0.2em;
+    padding: 0.2em 0.4em 0.1em;
+    font-size: 85%;
+    background: rgba(150, 150, 150, 0.1);
+    border: 1px solid rgba(100, 100, 100, 0.2);
+    border-radius: 3px;
+    overflow-wrap: break-word;
+}
