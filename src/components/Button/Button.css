@@ -1,39 +1,39 @@
 /* button size */
 .extra-small {
-  @apply py-2 px-3 text-xs !important;
+    @apply py-2 px-3 text-xs !important;
 }
 .small {
-  @apply py-2 px-3 text-sm !important;
+    @apply py-2 px-3 text-sm !important;
 }
 .medium {
-  @apply px-5 py-2.5 text-sm !important;
+    @apply px-5 py-2.5 text-sm !important;
 }
 .large {
-  @apply py-3 px-5 text-base !important;
+    @apply py-3 px-5 text-base !important;
 }
 .extra-large {
-  @apply px-6 py-3.5 text-base !important;
+    @apply px-6 py-3.5 text-base !important;
 }
 
 /* button block */
 .displayBlock {
-  display: block;
-  width: 100%;
+    display: block;
+    width: 100%;
 }
 
 /* button disable */
 .disable {
-  @apply cursor-not-allowed opacity-30;
+    @apply cursor-not-allowed opacity-30;
 }
 
 /* button loading */
 .loading {
-  @apply cursor-wait opacity-30;
+    @apply cursor-wait opacity-30;
 }
 
 /* default alternative Outline button */
 .defaultBtn {
-  @apply px-5 py-2.5 mr-2 mb-2
+    @apply px-5 py-2.5 mr-2 mb-2
     text-white font-medium text-sm
     bg-blue-700 
 
@@ -44,7 +44,7 @@
 }
 
 .alternativeBtn {
-  @apply py-2.5 px-5 mr-2 mb-2 
+    @apply py-2.5 px-5 mr-2 mb-2 
     text-sm font-medium text-gray-900 
     bg-white
 
@@ -57,7 +57,7 @@
 }
 
 .defaultBtnOutline {
-  @apply px-5 py-2.5 mr-2 mb-2 
+    @apply px-5 py-2.5 mr-2 mb-2 
     text-blue-700 font-medium text-sm text-center 
 
     hover:text-white hover:bg-blue-800 
@@ -70,7 +70,7 @@
 
 /* color */
 .green {
-  @apply text-white text-center font-medium
+    @apply text-white text-center font-medium
     bg-green-700
 
     hover:bg-green-800 
@@ -79,7 +79,7 @@
     rounded-lg;
 }
 .red {
-  @apply text-white text-center font-medium
+    @apply text-white text-center font-medium
     bg-red-700 
 
     hover:bg-red-800 focus:ring-4 
@@ -88,7 +88,7 @@
     rounded-lg;
 }
 .yellow {
-  @apply text-white text-center font-medium
+    @apply text-white text-center font-medium
     bg-yellow-400 
 
     hover:bg-yellow-500 
@@ -97,7 +97,7 @@
     rounded-lg;
 }
 .purple {
-  @apply text-white text-center font-medium
+    @apply text-white text-center font-medium
     bg-purple-700 
 
     hover:bg-purple-800 
@@ -105,9 +105,17 @@
     dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900
     rounded-lg;
 }
+.dark {
+    @apply text-white text-center font-medium
+   bg-gray-700 
+   hover:bg-gray-800 
+   focus:ring-4 focus:outline-none focus:ring-gray-300 
+   dark:bg-gray-600 dark:hover:bg-gray-500 dark:focus:ring-gray-600
+   rounded-lg;
+}
 
 .green-outline {
-  @apply text-center text-green-700 font-medium 
+    @apply text-center text-green-700 font-medium 
     hover:text-white hover:bg-green-800 
     focus:ring-4 focus:outline-none focus:ring-green-300 
     dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800
@@ -116,7 +124,7 @@
     rounded-lg;
 }
 .red-outline {
-  @apply text-red-700 font-medium text-center 
+    @apply text-red-700 font-medium text-center 
     hover:text-white hover:bg-red-800 
     focus:ring-4 focus:outline-none focus:ring-red-300 
     dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900
@@ -125,7 +133,7 @@
     rounded-lg;
 }
 .yellow-outline {
-  @apply text-yellow-400 font-medium text-center 
+    @apply text-yellow-400 font-medium text-center 
     hover:text-white hover:bg-yellow-500 
     focus:ring-4 focus:outline-none focus:ring-yellow-300 
     dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900
@@ -134,11 +142,22 @@
     rounded-lg;
 }
 .purple-outline {
-  @apply text-purple-700 text-center font-medium 
+    @apply text-purple-700 text-center font-medium 
     hover:text-white hover:bg-purple-800 
     focus:ring-4 focus:outline-none focus:ring-purple-300 
     dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900
 
     border border-purple-700 
     rounded-lg;
+}
+.dark-outline {
+    @apply text-gray-700 text-center font-medium
+  hover:bg-gray-800 hover:text-white
+  focus:ring-4 focus:outline-none focus:ring-gray-300 focus:ring-gray-600
+  dark:border-gray-600 dark:hover:bg-gray-600
+  
+  bg-transparent 
+  border border-gray-700 
+  rounded-lg 
+  dark:text-gray-300 dark:hover:text-white;
 }

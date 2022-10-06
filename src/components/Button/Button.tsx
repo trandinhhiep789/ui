@@ -8,7 +8,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fas, far)
 
-interface ButtonProps {
+export interface ButtonProps {
     /**
      * Màu chính button
      */
@@ -40,7 +40,7 @@ interface ButtonProps {
     /**
      * Nội dung button
      */
-    label?: string
+    children?: string
     /**
      * Icon button
      */
@@ -53,10 +53,17 @@ interface ButtonProps {
         | 'red'
         | 'yellow'
         | 'purple'
+        | 'dark'
         | 'green-outline'
         | 'red-outline'
         | 'yellow-outline'
         | 'purple-outline'
+        | 'defaultBtn'
+        | 'alternativeBtn'
+        | 'dark-outline'
+        | undefined
+    /** onClick */
+    onClick?: React.MouseEventHandler<HTMLElement>
 }
 const iconLoading: string = 'fa-solid fa-spinner'
 const Button = ({
@@ -68,7 +75,7 @@ const Button = ({
     size = 'medium',
     backgroundColor,
     color,
-    label,
+    onClick,
     icon = 'fa-solid fa-spinner',
     ...props
 }: ButtonProps) => {
@@ -84,17 +91,18 @@ const Button = ({
                 className={[typeButton, color, size, modeblock, modeloading, modedisable].join(' ')}
                 style={{ backgroundColor }}
                 {...props}
+                onClick={onClick}
             >
                 {loading ? (
                     <svg className={loading ? 'animate-spin h-5 w-5 mr-3' : ''} viewBox="0 0 24 24">
-                        <FontAwesomeIcon className={label != '' ? 'mr-2' : ''} icon={iconLoading as IconName} />
+                        <FontAwesomeIcon className={props.children != '' ? 'mr-2' : ''} icon={iconLoading as IconName} />
                     </svg>
                 ) : icon != 'fa-solid fa-spinner' ? (
-                    <FontAwesomeIcon className={label != '' ? 'mr-2' : ''} icon={icon as IconName} />
+                    <FontAwesomeIcon className={props.children != '' ? 'mr-2' : ''} icon={icon as IconName} />
                 ) : (
                     ''
                 )}
-                {label}
+                {props.children}
             </button>
         </div>
     )
