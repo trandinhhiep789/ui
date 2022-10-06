@@ -9,45 +9,25 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fas, far)
 
 export interface ButtonProps {
-    /**
-     * Màu chính button
-     */
+    /** Màu chính button*/
     primary?: boolean
-    /**
-     * Thuộc tính block của button
-     */
+    /**Thuộc tính block của button */
     block?: boolean
-    /**
-     * Thuộc tính disable của button
-     */
+    /** Thuộc tính disable của button */
     disable?: boolean
-    /**
-     * Thuộc tính loading của button
-     */
+    /** Thuộc tính loading của button */
     loading?: boolean
-    /**
-     * Thuộc tính đổi màu backgroundColor
-     */
+    /** Thuộc tính đổi màu backgroundColor */
     backgroundColor?: string
-    /**
-     * Kiểu loại button
-     */
+    /** Kiểu loại button */
     type?: 'outline' | 'defaul'
-    /**
-     * Kích cỡ button
-     */
+    /** Kích cỡ button */
     size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'
-    /**
-     * Nội dung button
-     */
+    /** Nội dung button */
     children?: string
-    /**
-     * Icon button
-     */
+    /** Icon button */
     icon?: string
-    /**
-     * Một số màu mặc định
-     */
+    /** Một số màu mặc định */
     color?:
         | 'green'
         | 'red'
