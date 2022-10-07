@@ -9,3 +9,4 @@ export { default as Text } from './Text'
 export { default as Alert } from './Alert'
 
 export { default as Tag } from './Tag'
+export { default as TagIcon } from './TagWithIcon'
