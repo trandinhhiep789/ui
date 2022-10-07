@@ -10,3 +10,4 @@ export { default as Alert } from './Alert'
 
 export { default as Tag } from './Tag'
 export { default as TagIcon } from './TagWithIcon'
+export { default as Tooltips } from './Tooltips'
