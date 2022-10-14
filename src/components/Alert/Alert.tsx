@@ -67,7 +67,7 @@ const Alert = ({
                 </div>
                 <div className={contentClass}>{props.children}</div>
                 <div className="flex">
-                    <Button size="extra-small" color={buttonClass} icon="eye" primary onClick={onOk}>
+                    <Button size="extra-small" color={buttonClass} primary onClick={onOk}>
                         {okText}
                     </Button>
                     <Button size="extra-small" color={buttonOutlineClass} onClick={onCancel} type="outline">
@@ -133,7 +133,7 @@ const Alert = ({
     return (
         <div {...props}>
             {typeAlert == 'default' ? (
-                <div className={iconType(typeOf)} role="alert">
+                <div className={[iconType(typeOf), 'text-left'].join(' ')} role="alert">
                     <span className="font-medium">{title}</span> {props.children}
                 </div>
             ) : (

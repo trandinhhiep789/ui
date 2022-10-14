@@ -3,7 +3,7 @@ import React from 'react'
 import './Report.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-regular-svg-icons'
-import { faTriangleExclamation, faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faTriangleExclamation, faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 interface ReportProps {
     /** Ẩn hiện report */
@@ -51,7 +51,7 @@ const Report = ({
             case 'warning':
                 return <FontAwesomeIcon icon={faTriangleExclamation} className="faTriangleExclamationReport" />
             case 'info':
-                return <FontAwesomeIcon icon={faInfo} className="faInfoReport" />
+                return <FontAwesomeIcon icon={faCircleInfo} className="faInfoReport" />
             default:
                 return <FontAwesomeIcon icon={faCircleCheck} className="faCircleReport" />
         }
@@ -117,10 +117,15 @@ const Report = ({
                         </div>
                         {/* Report body */}
                         <div className="px-4 py-3 space-y-6">
-                            <p className="break-words" dangerouslySetInnerHTML={{ __html: content }} />
+                            <p
+                                className="break-words text-left font-light text-gray-700 dark:text-gray-300"
+                                dangerouslySetInnerHTML={{ __html: content }}
+                            />
                         </div>
                         {/* Report footer */}
-                        <div className="text-right px-4 py-3 space-x-2 rounded-b border-gray-200 dark:border-gray-600">{bgButtonReport(type)}</div>
+                        <div className="text-right px-4 py-3 space-x-2 rounded-b border-gray-200 dark:border-gray-600">
+                            {bgButtonReport(type)}
+                        </div>
                     </div>
                 </div>
             </div>

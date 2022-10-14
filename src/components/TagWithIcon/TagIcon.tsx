@@ -9,7 +9,7 @@ library.add(fas, far)
 
 interface TagIcon {
     /** Nội dung Tag */
-    children?: any
+    children?: string
     /** Loại Tag */
     type?: 'default' | 'dark' | 'red' | 'green' | 'yellow' | 'indigo' | 'purple' | 'pink' | ''
     /** Kích cỡ Tag */
@@ -50,7 +50,6 @@ const TagIcon = ({ type = '', size, icon = 'fa-solid fa-spinner', ...props }: Ta
             )}
 
             {props.children}
-            {console.log(props.children)}
         </span>
     )
 }

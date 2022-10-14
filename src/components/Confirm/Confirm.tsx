@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Button from '../Button'
 import './Confirm.css'
 
 interface ConfirmProps {
@@ -42,16 +42,19 @@ const Confirm = ({
                         </div>
                         {/* Report body */}
                         <div className="px-4 py-3 space-y-6">
-                            <p className="break-words text-center" dangerouslySetInnerHTML={{ __html: content }} />
+                            <p
+                                className="break-words text-center font-light text-gray-700 dark:text-gray-300"
+                                dangerouslySetInnerHTML={{ __html: content }}
+                            />
                         </div>
                         {/* Report footer */}
                         <div className="flex px-4 py-3 space-x-2 rounded-b border-gray-200 dark:border-gray-600">
-                            <button type="button" className="btnConfirmOk w-full" onClick={onOk}>
+                            <Button block className="w-1/2" primary size="extra-small" onClick={onOk}>
                                 {okText}
-                            </button>
-                            <button type="button" className="btnConfirmCancel w-full" onClick={onCancel}>
+                            </Button>
+                            <Button block className="w-1/2" size="extra-small" onClick={onCancel}>
                                 {cancelText}
-                            </button>
+                            </Button>
                         </div>
                     </div>
                 </div>

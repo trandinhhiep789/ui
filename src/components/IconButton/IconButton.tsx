@@ -1,15 +1,16 @@
 import React from 'react'
 
-import './Button.css'
+import './IconButton.css'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { library, IconName } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+library.add(fas, far)
 
-export interface ButtonProps {
+export interface IconButtonProps {
     /** Màu chính button*/
     primary?: boolean
-    /** className tailwincss button*/
-    className?: string
     /**Thuộc tính block của button */
     block?: boolean
     /** Thuộc tính disable của button */
@@ -24,6 +25,8 @@ export interface ButtonProps {
     size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large'
     /** Nội dung button */
     children?: string
+    /** Icon button */
+    icon?: string
     /** Một số màu mặc định */
     color?:
         | 'green'
@@ -43,7 +46,7 @@ export interface ButtonProps {
     onClick?: React.MouseEventHandler<HTMLElement>
 }
 const iconLoading: string = 'fa-solid fa-spinner'
-const Button = ({
+const IconButton = ({
     primary = false,
     block = false,
     disable = false,
@@ -53,36 +56,39 @@ const Button = ({
     backgroundColor,
     color,
     onClick,
-    className = '',
+    icon = 'fa-solid fa-spinner',
     ...props
-}: ButtonProps) => {
+}: IconButtonProps) => {
     const mode = primary ? 'defaultBtn' : 'alternativeBtn'
     const modeblock = block ? 'displayBlock' : ''
     const modedisable = disable ? 'disable' : ''
     const modeloading = loading ? 'loading' : ''
     const typeButton = type === 'outline' ? 'defaultBtnOutline' : mode
     return (
-        <div className={className}>
+        <div>
             <button
                 type="button"
-                className={[typeButton, color, size, modeblock, modeloading, modedisable, 'flex'].join(' ')}
+                className={[typeButton, color, size, modeblock, modeloading, modedisable].join(' ')}
                 style={{ backgroundColor }}
                 {...props}
                 onClick={onClick}
             >
-                <div className="w-0">
-                    {loading ? (
-                        <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
-                            <FontAwesomeIcon icon={faSpinner} size="3x" style={{ color: color }} />
-                        </svg>
-                    ) : (
-                        ''
-                    )}
-                </div>
-                <div className={loading ? 'ml-6' : ''}>{props.children}</div>
+                {loading ? (
+                    <svg className={loading ? 'animate-spin h-5 w-5 mr-3' : ''} viewBox="0 0 24 24">
+                        <FontAwesomeIcon
+                            className={props.children && props.children != '' ? 'mr-2' : ''}
+                            icon={iconLoading as IconName}
+                        />
+                    </svg>
+                ) : icon != 'fa-solid fa-spinner' ? (
+                    <FontAwesomeIcon className={props.children && props.children != '' ? 'mr-2' : ''} icon={icon as IconName} />
+                ) : (
+                    ''
+                )}
+                {props.children}
             </button>
         </div>
     )
 }
 
-export default Button
+export default IconButton

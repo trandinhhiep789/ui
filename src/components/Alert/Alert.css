@@ -1,4 +1,4 @@
-/* default */
+/* typeOf Alert */
 .alert-success {
     @apply p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800;
 }
@@ -28,7 +28,7 @@
     @apply text-lg font-medium text-green-700 dark:text-green-800;
 }
 .alert--success__content {
-    @apply mt-2 mb-4 text-sm text-green-700 dark:text-green-800;
+    @apply mt-2 mb-4 text-sm text-left font-light text-green-700 dark:text-green-800;
 }
 
 /* danger alert */
@@ -42,7 +42,7 @@
     @apply text-lg font-medium text-red-900 dark:text-red-800;
 }
 .alert--danger__content {
-    @apply mt-2 mb-4 text-sm text-red-900 dark:text-red-800;
+    @apply mt-2 mb-4 text-sm text-left font-light text-red-900 dark:text-red-800;
 }
 
 /* dark alert */
@@ -56,7 +56,7 @@
     @apply text-lg font-medium text-gray-700 dark:text-gray-300;
 }
 .alert--dark__content {
-    @apply mt-2 mb-4 text-sm text-gray-700 dark:text-gray-300;
+    @apply mt-2 mb-4 text-sm text-left font-light text-gray-700 dark:text-gray-300;
 }
 
 /* info alert */
@@ -70,7 +70,7 @@
     @apply text-lg font-medium text-blue-900;
 }
 .alert--info__content {
-    @apply mt-2 mb-4 text-sm text-blue-900;
+    @apply mt-2 mb-4 text-sm text-left font-light text-blue-900;
 }
 
 /* warning alert */
@@ -84,5 +84,5 @@
     @apply text-lg font-medium text-yellow-700 dark:text-yellow-800;
 }
 .alert--warning__content {
-    @apply mt-2 mb-4 text-sm text-yellow-700 dark:text-yellow-800;
+    @apply mt-2 mb-4 text-sm text-left font-light text-yellow-700 dark:text-yellow-800;
 }

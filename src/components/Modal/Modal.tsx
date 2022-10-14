@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from '../Button'
 
 import './Modal.css'
 
@@ -65,16 +66,17 @@ const Modal = ({
                         </div>
                         {/* Modal body */}
                         <div className="p-6 space-y-6">
-                            <div dangerouslySetInnerHTML={{ __html: content }} />
+                            <div
+                                className="text-left font-light text-gray-700 dark:text-gray-300"
+                                dangerouslySetInnerHTML={{ __html: content }}
+                            />
                         </div>
                         {/* Modal footer */}
                         <div className="flex items-center p-6 space-x-2 rounded-b border-t border-gray-200 dark:border-gray-600">
-                            <button type="button" className="btnOk" onClick={onOk}>
+                            <Button primary onClick={onOk}>
                                 {okText}
-                            </button>
-                            <button type="button" className="btnCancel" onClick={onCancel}>
-                                {cancelText}
-                            </button>
+                            </Button>
+                            <Button onClick={onCancel}>{cancelText}</Button>
                         </div>
                     </div>
                 </div>
