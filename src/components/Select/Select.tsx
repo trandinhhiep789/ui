@@ -1,73 +1,69 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import SearchbarDropdown from './SearchbarDropdown'
+import SearchbarDropdownMulti from './SearchbarDropdownMulti'
 import './Select.css'
 
 interface SelectProps {
-    /** padding Select */
-    p?: string
     /** width Select */
     widthSelect?: string
     /** defaultValue Select */
     defaultValue?: string
-    /** defaultTextValue Select */
-    defaultTextValue?: string
+    /** placeholder Select */
+    placeholder?: string
     children?: React.ReactNode | string | (() => string)
-    /** list Option Select */
-    listOption?: () => void | JSX.Element | JSX.Element[] | string | (() => string)
-    /** handleChange */
+    /** handleChange log data ra ben ngoai */
     handleChange?: (value: string) => void
 }
-
+const defaultOptions: any = []
+for (let i = 0; i < 10; i++) {
+    defaultOptions.push(`option ${i}`)
+    defaultOptions.push(`suggesstion ${i}`)
+    defaultOptions.push(`advice ${i}`)
+}
 const Select = ({
-    p = 'p-1',
     defaultValue = '',
-    defaultTextValue = '--Vui lòng chọn--',
+    placeholder = '--Vui lòng chọn--',
     widthSelect = '',
     handleChange = (value: string) => {},
-    listOption = () => {
-        return <option value="-1">Không có data</option>
-    },
     ...props
 }: SelectProps) => {
-    const [selectedOption, setSelectedOption] = useState('')
+    const [options, setOptions] = useState([])
 
-    const onChangeSelect = (value: string) => {
-        setSelectedOption(value)
-        handleChange(value)
+    const [optionsMulti, setOptionsMulti] = useState(defaultOptions)
+    const [optionsMultiTamp, setOptionsMultiTamp]: any = useState([])
+
+    const onInputChange = (event: { target: { value: any } }) => {
+        setOptions(defaultOptions.filter((option: string | any[]) => option.includes(event.target.value)))
+        if (event.target.value) {
+            handleChange(event.target.value)
+        }
     }
 
-    const abc: any = ['dog', 'cat', 'hamster', 'parrot', 'spider', 'goldfish']
+    const onInputChangeMulti = (event: { target: { value: any } }) => {
+        const newListOptions = optionsMulti.filter((option: string | any[]) => option != event.target.value)
+        setOptionsMulti(newListOptions)
+        if (event.target.value) {
+            setOptionsMultiTamp((prevState: any) => [...prevState, event.target.value])
+        }
+        if (event.target.value) {
+            handleChange(event.target.value)
+        }
+    }
 
-    // const optionProps: any = () => {
-    //     return (
-    //         <>
-    //             {/* <option value="dog">Dog</option>
-    //             <option value="cat">Cat</option>
-    //             <option value="hamster">Hamster</option>
-    //             <option value="parrot">Parrot</option>
-    //             <option value="spider">Spider</option>
-    //             <option value="goldfish">Goldfish</option> */}
-    //             {/* {abc.map((value: any, index: any) => (
-    //                 <option key={index} value={value}>
-    //                     {value}
-    //                 </option>
-    //             ))} */}
-    //             {listOption}
-    //         </>
-    //     )
-    // }
+    const changeSetOptionsMultiTamp = (value: any) => {
+        setOptionsMultiTamp(optionsMultiTamp.filter((option: string | any[]) => option != value))
+    }
 
     return (
         <span {...props}>
-            <select
-                defaultValue={defaultValue}
-                value={selectedOption}
-                onChange={e => onChangeSelect(e.target.value)}
-                style={{ width: widthSelect }}
-                className={['border rounded-lg', 'block', p].join(' ')}
-            >
-                <option value="">{defaultTextValue}</option>
-                {/* {listOption()} */}
-            </select>
+            {/* <SearchbarDropdownMulti
+                options={optionsMulti}
+                listSelected={optionsMultiTamp}
+                changeSetOptionsMultiTamp={changeSetOptionsMultiTamp}
+                placeholder={placeholder}
+                onInputChangeMulti={onInputChangeMulti}
+            /> */}
+            <SearchbarDropdown options={options} onInputChange={onInputChange} placeholder={placeholder} />
         </span>
     )
 }

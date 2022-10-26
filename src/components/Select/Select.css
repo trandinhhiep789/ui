@@ -1,0 +1,53 @@
+.inputSelect {
+    @apply border border-gray-300 
+    text-gray-900 text-sm 
+    rounded-lg 
+    
+    focus:ring-teal-400 focus:border-teal-400 
+    block w-full p-2.5 
+    dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-teal-400 dark:focus:border-teal-400 !important;
+}
+.inputSelectMulti {
+    border: none !important;
+}
+.inputSelectMulti:focus-visible {
+    outline: none !important;
+}
+
+.contentSelect {
+    @apply max-h-52 overflow-y-auto block rounded-lg mt-2 !important;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+}
+
+/*
+ *  STYLE scrollbar contentSelect
+ */
+
+.contentSelect::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(214, 50, 50, 0.011);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+}
+
+.contentSelect::-webkit-scrollbar {
+    width: 6px;
+    background-color: #f5f5f5;
+}
+
+.contentSelect::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.011);
+    background-color: rgb(173, 173, 173);
+}
+
+.contentSelectHide {
+    @apply hidden;
+}
+
+.eachSelect {
+    @apply hover:bg-teal-50 cursor-pointer px-2 py-1;
+}
+
+.selected {
+    @apply bg-teal-400;
+}

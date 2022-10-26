@@ -26,5 +26,5 @@ OutlineButton.args = {
     primary: true,
     children: 'Outline Button',
     size: 'medium',
-    typeBtn: 'outline'
+    type: 'outline'
 }
