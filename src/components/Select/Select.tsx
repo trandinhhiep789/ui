@@ -16,9 +16,9 @@ interface SelectProps {
 }
 const defaultOptions: any = []
 for (let i = 0; i < 10; i++) {
-    defaultOptions.push(`option ${i}`)
-    defaultOptions.push(`suggesstion ${i}`)
-    defaultOptions.push(`advice ${i}`)
+    defaultOptions.push({ value: i, label: `option ${i}` })
+    defaultOptions.push({ value: i, label: `suggesstion ${i}` })
+    defaultOptions.push({ value: i, label: `advice ${i}` })
 }
 const Select = ({
     defaultValue = '',
@@ -33,7 +33,7 @@ const Select = ({
     const [optionsMultiTamp, setOptionsMultiTamp]: any = useState([])
 
     const onInputChange = (event: { target: { value: any } }) => {
-        setOptions(defaultOptions.filter((option: string | any[]) => option.includes(event.target.value)))
+        setOptions(defaultOptions.filter((option: any | any[]) => option.label.includes(event.target.value)))
         if (event.target.value) {
             handleChange(event.target.value)
         }

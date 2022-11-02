@@ -17,6 +17,8 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
     const ulRef: any = useRef()
     const inputRef: any = useRef()
     const [inputSelected, setInputSelected]: any = useState('')
+    const [inputSelectedKeyCode, setInputSelectedKeyCode]: any = useState(0)
+
     useEffect(() => {
         inputRef.current.addEventListener('click', (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
             event.stopPropagation()
@@ -28,12 +30,47 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                 elem.scrollIntoView({ behavior: 'smooth' })
             }
         })
-        document.addEventListener('click', event => {
+
+        window.addEventListener('click', event => {
             if (ulRef.current.className) {
                 ulRef.current.className = 'contentSelectHide'
             }
         })
     }, [])
+
+    useEffect(() => {
+        const handleKeydown = (e: any) => {
+            // up arrow
+            if (e.keyCode == '38') {
+                if (inputSelectedKeyCode == 0) {
+                    return
+                } else {
+                    setInputSelectedKeyCode(inputSelectedKeyCode - 1)
+                }
+            }
+            // down arrow
+            else if (e.keyCode == '40') {
+                if (options && options.length > 0) {
+                    if (inputSelectedKeyCode == options.length - 1) {
+                        return
+                    }
+                }
+                setInputSelectedKeyCode(inputSelectedKeyCode + 1)
+            }
+            // enter key
+            else if (e.keyCode == '13') {
+                console.log('enter key')
+                const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
+                if (optionLabel) {
+                    setInputSelected(optionLabel.innerText + '')
+                    inputRef.current.value = ''
+                }
+            }
+        }
+
+        window.addEventListener('keydown', handleKeydown, false)
+        return () => window.removeEventListener('keydown', handleKeydown)
+    }, [options, inputSelectedKeyCode])
 
     const onInputChangeSearchbarDropdown = (event: { target: { value: any } }) => {
         if (event.target.value) {
@@ -69,19 +106,23 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                 <svg className="absolute top-2.5 right-7 text-gray-300 origin-center rotate-90 h-6 w-6">
                     <FontAwesomeIcon icon={faMinus} />
                 </svg>
-
                 {/* list option */}
                 <div id="results" ref={ulRef}>
                     {options.map((option, index) => {
                         return (
                             <div
-                                className={['eachSelect', inputSelected == option ? 'selected' : ''].join(' ')}
+                                className={[
+                                    'eachSelect',
+                                    inputSelected == option.label ? 'selected' : '',
+                                    inputSelectedKeyCode == index ? 'inputSelectedKeyCode' : ''
+                                ].join(' ')}
                                 key={index}
                                 onClick={e => {
-                                    setInputSelected(option)
+                                    setInputSelected(option.label)
+                                    inputRef.current.value = ''
                                 }}
                             >
-                                {option}
+                                {option.label}
                             </div>
                         )
                     })}
