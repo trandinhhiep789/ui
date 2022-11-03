@@ -40,26 +40,52 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
 
     useEffect(() => {
         const handleKeydown = (e: any) => {
+            const optionLabelList: any = document.querySelector('#results')
+            let optionLabelHeightBottom
+            let optionLabelHeightTop
+            if (optionLabelList) {
+                optionLabelHeightBottom = optionLabelList.getBoundingClientRect().bottom
+                optionLabelHeightTop = optionLabelList.getBoundingClientRect().top
+            }
+
+            console.log('optionLabelHeightBottom :', optionLabelHeightBottom)
+            console.log('optionLabelHeightTop :', optionLabelHeightTop)
             // up arrow
             if (e.keyCode == '38') {
+                const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (inputSelectedKeyCode == 0) {
                     return
                 } else {
                     setInputSelectedKeyCode(inputSelectedKeyCode - 1)
+                    if (optionLabel) {
+                        let currentPosition = optionLabel.getBoundingClientRect().top
+                        // console.log('optionLabel top', optionLabel.getBoundingClientRect().top)
+                        if (currentPosition < optionLabelHeightTop) {
+                            console.log('optionLabel top', optionLabel.getBoundingClientRect().top)
+                            optionLabel.scrollIntoView()
+                        }
+                    }
                 }
             }
             // down arrow
             else if (e.keyCode == '40') {
+                const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (options && options.length > 0) {
                     if (inputSelectedKeyCode == options.length - 1) {
                         return
                     }
                 }
                 setInputSelectedKeyCode(inputSelectedKeyCode + 1)
+                if (optionLabel) {
+                    let currentPosition = optionLabel.getBoundingClientRect().bottom
+                    if (currentPosition > optionLabelHeightBottom) {
+                        console.log('currentPosition', currentPosition)
+                        optionLabel.scrollIntoView()
+                    }
+                }
             }
             // enter key
             else if (e.keyCode == '13') {
-                console.log('enter key')
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (optionLabel) {
                     setInputSelected(optionLabel.innerText + '')
