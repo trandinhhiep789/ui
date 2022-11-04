@@ -7,16 +7,23 @@ import './Select.css'
 interface SearchbarDropdownProps {
     /** Danh sách option */
     options?: Array<any>
-    /** onChange option */
+    /** onInputChange để callback ra ngoài trả data ra */
     onInputChange?: (e: any) => void
     /** placeholder */
     placeholder?: string
 }
 
 const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placeholder = '', ...props }: SearchbarDropdownProps) => {
+    /** useRef để Dom tới list option, để lắng nghe click, để dựa vào đó set ẩn hiện list option */
     const ulRef: any = useRef()
+
+    /** useRef để Dom tới input search select, để lắng nghe click, để dựa vào đó báo cho ulRef ẩn hiện cái list option*/
     const inputRef: any = useRef()
+
+    /** inputSelected để hiện option hiện đang được chọn trong placeholder*/
     const [inputSelected, setInputSelected]: any = useState('')
+
+    /** inputSelectedKeyCode để di chuyển option khi người dùng nhấn mũi tên lên xuống trên bàn phím*/
     const [inputSelectedKeyCode, setInputSelectedKeyCode]: any = useState(0)
 
     useEffect(() => {
@@ -48,8 +55,6 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                 optionLabelHeightTop = optionLabelList.getBoundingClientRect().top
             }
 
-            console.log('optionLabelHeightBottom :', optionLabelHeightBottom)
-            console.log('optionLabelHeightTop :', optionLabelHeightTop)
             // up arrow
             if (e.keyCode == '38') {
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
@@ -59,9 +64,7 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                     setInputSelectedKeyCode(inputSelectedKeyCode - 1)
                     if (optionLabel) {
                         let currentPosition = optionLabel.getBoundingClientRect().top
-                        // console.log('optionLabel top', optionLabel.getBoundingClientRect().top)
                         if (currentPosition < optionLabelHeightTop) {
-                            console.log('optionLabel top', optionLabel.getBoundingClientRect().top)
                             optionLabel.scrollIntoView()
                         }
                     }
@@ -79,7 +82,6 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                 if (optionLabel) {
                     let currentPosition = optionLabel.getBoundingClientRect().bottom
                     if (currentPosition > optionLabelHeightBottom) {
-                        console.log('currentPosition', currentPosition)
                         optionLabel.scrollIntoView()
                     }
                 }
@@ -89,7 +91,16 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (optionLabel) {
                     setInputSelected(optionLabel.innerText + '')
+                    const opSelected = {
+                        target: {
+                            value: optionLabel.getAttribute('data-select')
+                        }
+                    }
+                    onInputChange(opSelected)
                     inputRef.current.value = ''
+                    if (ulRef.current.className) {
+                        ulRef.current.className = 'contentSelectHide'
+                    }
                 }
             }
         }
@@ -103,6 +114,19 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
             setInputSelected('')
         }
         onInputChange(event)
+    }
+
+    const onSelectEachOption = (label: string, value: string) => {
+        setInputSelected(label)
+
+        const opSelected = {
+            target: {
+                value: value
+            }
+        }
+        onInputChange(opSelected)
+
+        inputRef.current.value = ''
     }
 
     return (
@@ -143,10 +167,8 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                                     inputSelectedKeyCode == index ? 'inputSelectedKeyCode' : ''
                                 ].join(' ')}
                                 key={index}
-                                onClick={e => {
-                                    setInputSelected(option.label)
-                                    inputRef.current.value = ''
-                                }}
+                                onClick={() => onSelectEachOption(option.label, option.value)}
+                                data-select={option.value}
                             >
                                 {option.label}
                             </div>

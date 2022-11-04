@@ -45,11 +45,12 @@
 }
 
 .eachSelect {
-    @apply hover:bg-teal-400 cursor-pointer px-2 py-1;
+    @apply hover:bg-teal-100 cursor-pointer px-2 py-1;
 }
 
 .inputSelectedKeyCode {
-    @apply bg-teal-400 scroll-mt-6;
+    @apply bg-teal-400;
+    scroll-margin-top: 31px;
 }
 
 .selected {

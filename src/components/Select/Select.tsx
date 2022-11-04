@@ -16,9 +16,9 @@ interface SelectProps {
 }
 const defaultOptions: any = []
 for (let i = 0; i < 10; i++) {
-    defaultOptions.push({ value: i, label: `option ${i}` })
-    defaultOptions.push({ value: i, label: `suggesstion ${i}` })
-    defaultOptions.push({ value: i, label: `advice ${i}` })
+    defaultOptions.push({ value: `option ${i}`, label: `Option ${i}` })
+    defaultOptions.push({ value: `suggesstion ${i}`, label: `Suggesstion ${i}` })
+    defaultOptions.push({ value: `advice ${i}`, label: `Advice ${i}` })
 }
 const Select = ({
     defaultValue = '',
@@ -35,6 +35,7 @@ const Select = ({
     const onInputChange = (event: { target: { value: any } }) => {
         setOptions(defaultOptions.filter((option: any | any[]) => option.label.includes(event.target.value)))
         if (event.target.value) {
+            console.log('event.target.value xuất : ', event.target.value)
             handleChange(event.target.value)
         }
     }
