@@ -29,7 +29,7 @@ const Select = ({
 }: SelectProps) => {
     const [options, setOptions] = useState([])
 
-    const [optionsMulti, setOptionsMulti] = useState(defaultOptions)
+    const [optionsMulti, setOptionsMulti] = useState([])
     const [optionsMultiTamp, setOptionsMultiTamp]: any = useState([])
 
     const onInputChange = (event: { target: { value: any } }) => {
@@ -57,6 +57,7 @@ const Select = ({
 
     return (
         <span {...props}>
+            <SearchbarDropdown options={options} onInputChange={onInputChange} placeholder={placeholder} />
             {/* <SearchbarDropdownMulti
                 options={optionsMulti}
                 listSelected={optionsMultiTamp}
@@ -64,7 +65,6 @@ const Select = ({
                 placeholder={placeholder}
                 onInputChangeMulti={onInputChangeMulti}
             /> */}
-            <SearchbarDropdown options={options} onInputChange={onInputChange} placeholder={placeholder} />
         </span>
     )
 }

@@ -96,11 +96,11 @@ const SearchbarDropdownMulti = ({
                             className="eachSelect"
                             key={index}
                             onClick={e => {
-                                inputRef.current.value = option
+                                inputRef.current.value = option.label
                                 // setLsSelected((prevState: any) => [...prevState, option])
                             }}
                         >
-                            {option}
+                            {option.label}
                         </div>
                     )
                 })}

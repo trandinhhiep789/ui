@@ -109,6 +109,10 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
         return () => window.removeEventListener('keydown', handleKeydown)
     }, [options, inputSelectedKeyCode])
 
+    const onMouseOverOption = (index: number) => {
+        setInputSelectedKeyCode(index)
+    }
+
     const onInputChangeSearchbarDropdown = (event: { target: { value: any } }) => {
         if (event.target.value) {
             setInputSelected('')
@@ -168,6 +172,7 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                                 ].join(' ')}
                                 key={index}
                                 onClick={() => onSelectEachOption(option.label, option.value)}
+                                onMouseOver={() => onMouseOverOption(index)}
                                 data-select={option.value}
                             >
                                 {option.label}

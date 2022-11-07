@@ -49,7 +49,7 @@
 }
 
 .inputSelectedKeyCode {
-    @apply bg-teal-400;
+    @apply bg-teal-100;
     scroll-margin-top: 31px;
 }
 
