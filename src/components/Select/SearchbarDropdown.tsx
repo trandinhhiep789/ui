@@ -57,6 +57,11 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
 
             // up arrow
             if (e.keyCode == '38') {
+                const eachSelectClass: any = document.querySelector('.eachSelectHover')
+                if (eachSelectClass) {
+                    eachSelectClass.classList.remove('eachSelectHover')
+                }
+
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (inputSelectedKeyCode == 0) {
                     return
@@ -72,6 +77,11 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
             }
             // down arrow
             else if (e.keyCode == '40') {
+                const eachSelectClass: any = document.querySelector('.eachSelectHover')
+                if (eachSelectClass) {
+                    eachSelectClass.classList.remove('eachSelectHover')
+                }
+
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (options && options.length > 0) {
                     if (inputSelectedKeyCode == options.length - 1) {
@@ -88,6 +98,11 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
             }
             // enter key
             else if (e.keyCode == '13') {
+                const eachSelectClass: any = document.querySelector('.eachSelectHover')
+                if (eachSelectClass) {
+                    eachSelectClass.classList.remove('eachSelectHover')
+                }
+
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (optionLabel) {
                     setInputSelected(optionLabel.innerText + '')

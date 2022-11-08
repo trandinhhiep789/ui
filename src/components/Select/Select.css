@@ -15,12 +15,12 @@
 }
 
 .contentSelect {
-    @apply max-h-52 overflow-y-auto block rounded-lg mt-2 !important;
+    @apply max-h-52 overflow-y-auto block rounded-lg mt-2 w-full !important;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
 }
 
 /*
- *  STYLE scrollbar contentSelect
+ *  STYLE scrollbar contentSelect START
  */
 
 .contentSelect::-webkit-scrollbar-track {
@@ -40,12 +40,19 @@
     background-color: rgb(173, 173, 173);
 }
 
+/*
+ *  STYLE scrollbar contentSelect END
+ */
+
 .contentSelectHide {
     @apply hidden;
 }
 
 .eachSelect {
-    @apply hover:bg-teal-100 cursor-pointer px-2 py-1;
+    @apply cursor-pointer px-2 py-1 w-full;
+}
+.eachSelectHover {
+    @apply hover:bg-teal-100;
 }
 
 .inputSelectedKeyCode {

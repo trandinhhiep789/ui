@@ -53,7 +53,7 @@ const SearchbarDropdownMulti = ({
             <div className="relative cursor-pointer inputSelect">
                 <div className="flex flex-wrap">
                     <div>
-                        {listSelected &&
+                        {/* {listSelected &&
                             listSelected.map((item: any, index: any) => (
                                 <span key={index} className="tagDefault smallTag relative">
                                     {item} &ensp;&nbsp;
@@ -66,7 +66,7 @@ const SearchbarDropdownMulti = ({
                                         </svg>
                                     </span>
                                 </span>
-                            ))}
+                            ))} */}
                     </div>
                     <div>
                         <input
