@@ -11,9 +11,16 @@ interface SearchbarDropdownProps {
     onInputChange?: (e: any) => void
     /** placeholder */
     placeholder?: string
+    widthSelect?: string
 }
 
-const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placeholder = '', ...props }: SearchbarDropdownProps) => {
+const SearchbarDropdown = ({
+    options = [],
+    onInputChange = event => {},
+    placeholder = '',
+    widthSelect = '',
+    ...props
+}: SearchbarDropdownProps) => {
     /** useRef để Dom tới list option, để lắng nghe click, để dựa vào đó set ẩn hiện list option */
     const ulRef: any = useRef()
 
@@ -149,7 +156,7 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
     }
 
     return (
-        <div {...props}>
+        <div {...props} style={{ width: widthSelect }}>
             <div className="relative cursor-pointer">
                 <input
                     id="search-bar"
@@ -159,6 +166,11 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                     ref={inputRef}
                     onChange={onInputChangeSearchbarDropdown}
                     autoComplete="off"
+                    autoCorrect="off"
+                    spellCheck="false"
+                    aria-autocomplete="list"
+                    role="combobox"
+                    autoCapitalize="none"
                 />
                 <div className="absolute top-2 left-2.5">{inputSelected && inputSelected}</div>
                 {inputSelected && inputSelected != '' && (
@@ -176,7 +188,7 @@ const SearchbarDropdown = ({ options = [], onInputChange = event => {}, placehol
                     <FontAwesomeIcon icon={faMinus} />
                 </svg>
                 {/* list option */}
-                <div id="results" ref={ulRef}>
+                <div id="results" ref={ulRef} style={{ width: widthSelect }}>
                     {options.map((option, index) => {
                         return (
                             <div

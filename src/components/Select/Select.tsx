@@ -23,7 +23,7 @@ for (let i = 0; i < 10; i++) {
 const Select = ({
     defaultValue = '',
     placeholder = '--Vui lòng chọn--',
-    widthSelect = '250',
+    widthSelect = '',
     handleChange = (value: string) => {},
     ...props
 }: SelectProps) => {
@@ -42,14 +42,13 @@ const Select = ({
     }
 
     const onInputChangeMulti = (event: { target: { value: any } }) => {
-        // const newListOptions = optionsMulti.filter((option: string | any[]) => option != event.target.value)
-        // setOptionsMulti(newListOptions)
-        // if (event.target.value) {
-        //     setOptionsMultiTamp((prevState: any) => [...prevState, event.target.value])
-        // }
-        // if (event.target.value) {
-        //     handleChange(event.target.value)
-        // }
+        if (event.target.value == undefined) {
+            event.target.value = ''
+        }
+        setOptionsMulti(defaultOptions.filter((option: any | any[]) => option.label.includes(event.target.value)))
+        if (event.target.value) {
+            handleChange(event.target.value)
+        }
     }
 
     const changeSetOptionsMultiTamp = (value: any) => {
@@ -57,14 +56,20 @@ const Select = ({
     }
 
     return (
-        <div {...props} style={{ width: widthSelect + 'px' }}>
-            {/* <SearchbarDropdown options={options} onInputChange={onInputChange} placeholder={placeholder} /> */}
+        <div {...props} style={{ width: widthSelect }}>
+            {/* <SearchbarDropdown
+                options={options}
+                onInputChange={onInputChange}
+                placeholder={placeholder}
+                widthSelect={widthSelect}
+            /> */}
             <SearchbarDropdownMulti
                 options={optionsMulti}
                 onInputChangeMulti={onInputChangeMulti}
                 placeholder={placeholder}
                 listSelected={optionsMultiTamp}
                 changeSetOptionsMultiTamp={changeSetOptionsMultiTamp}
+                widthSelect={widthSelect}
             />
         </div>
     )
