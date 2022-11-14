@@ -13,7 +13,10 @@ interface SearchbarDropdownMultiProps {
     onInputChangeMulti?: (e: any) => void
     /** placeholder */
     placeholder?: string
+    /** width Select ...px or ...% */
     widthSelect?: string
+    /** giới hạn trên một dòng */
+    ellipsis?: boolean
     changeSetOptionsMultiTamp?: (value: any) => void
 }
 
@@ -24,6 +27,7 @@ const SearchbarDropdownMulti = ({
     placeholder = '',
     listSelected = [],
     widthSelect = '',
+    ellipsis = false,
     ...props
 }: SearchbarDropdownMultiProps) => {
     const ulRef: any = useRef()
@@ -31,13 +35,7 @@ const SearchbarDropdownMulti = ({
     const inputBorderRef: any = useRef()
 
     const [value, setValue] = useState('')
-    const [listOption, setlistOption]: any = useState(options)
     const [listOptionSelected, setlistOptionSelected]: any = useState([])
-
-    // useEffect(() => {
-    //     console.log('ok')
-    //     setlistOption(options)
-    // }, [options])
 
     useEffect(() => {
         inputBorderRef.current.addEventListener('click', (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
@@ -53,10 +51,7 @@ const SearchbarDropdownMulti = ({
         })
     }, [])
 
-    const handleListOption = (option: any) => {}
-
     const onSelectEachOption = (item: any) => {
-        // setlistOption(listOption.filter((option: any) => option.value != item.value))
         setlistOptionSelected([...listOptionSelected, item])
 
         inputRef.current.value = ''
@@ -69,6 +64,7 @@ const SearchbarDropdownMulti = ({
     return (
         <div {...props} style={{ width: widthSelect }}>
             <div className="cursor-pointer inputSelectMul">
+                <div ref={inputBorderRef} className="classNameToClickOpenListOption"></div>
                 <div className="divFlexContentInputMulti">
                     {listOptionSelected &&
                         listOptionSelected.map((item: any, index: any) => (
@@ -77,6 +73,7 @@ const SearchbarDropdownMulti = ({
                                 <span
                                     className="mt-0.5 p-1 absolute top-0 right-0 hover:bg-rose-400 rounded"
                                     onClick={() => onDeleteSelectEachOption(item)}
+                                    style={{ zIndex: '1' }}
                                 >
                                     <svg className="h-3 w-3">
                                         <FontAwesomeIcon icon={faXmark} />
@@ -87,7 +84,6 @@ const SearchbarDropdownMulti = ({
                     <div
                         className="divInputMulti"
                         data-value={listOptionSelected.length > 0 ? value : value == '' ? placeholder : value}
-                        ref={inputBorderRef}
                     >
                         <input
                             id="search-bar"
@@ -108,6 +104,29 @@ const SearchbarDropdownMulti = ({
                         />
                     </div>
                 </div>
+
+                {listOptionSelected && listOptionSelected.length > 0 ? (
+                    <div className="flex items-center justify-center">
+                        <svg
+                            className="text-gray-300 h-4 w-4 mr-2 hover:text-gray-400"
+                            style={{ zIndex: '1' }}
+                            onClick={() => setlistOptionSelected([])}
+                        >
+                            <FontAwesomeIcon icon={faXmark} />
+                        </svg>
+                    </div>
+                ) : (
+                    ''
+                )}
+
+                <div className="flex items-center justify-center border-l-2">
+                    <svg className="text-gray-300 h-4 w-4 ml-2">
+                        <FontAwesomeIcon icon={faChevronDown} />
+                    </svg>
+                </div>
+            </div>
+
+            <div className="relative w-full">
                 {/* list option */}
                 <div id="results" style={{ width: widthSelect }} ref={ulRef}>
                     {options.map((option: any, index: any) => {
@@ -125,12 +144,6 @@ const SearchbarDropdownMulti = ({
                             </div>
                         )
                     })}
-                </div>
-
-                <div className="flex items-center justify-center border-l-2">
-                    <svg className="text-gray-300 h-4 w-4 ml-2">
-                        <FontAwesomeIcon icon={faChevronDown} />
-                    </svg>
                 </div>
             </div>
         </div>

@@ -4,13 +4,14 @@ import SearchbarDropdownMulti from './SearchbarDropdownMulti'
 import './Select.css'
 
 interface SelectProps {
-    /** width Select */
+    /** width Select ...px or ...% */
     widthSelect?: string
     /** defaultValue Select */
     defaultValue?: string
     /** placeholder Select */
     placeholder?: string
-    children?: React.ReactNode | string | (() => string)
+    /** giới hạn trên một dòng */
+    ellipsis?: boolean
     /** handleChange log data ra ben ngoai */
     handleChange?: (value: string) => void
 }
@@ -23,7 +24,8 @@ for (let i = 0; i < 10; i++) {
 const Select = ({
     defaultValue = '',
     placeholder = '--Vui lòng chọn--',
-    widthSelect = '',
+    widthSelect = '300px',
+    ellipsis = false,
     handleChange = (value: string) => {},
     ...props
 }: SelectProps) => {
@@ -57,18 +59,19 @@ const Select = ({
 
     return (
         <div {...props} style={{ width: widthSelect }}>
-            {/* <SearchbarDropdown
-                options={options}
-                onInputChange={onInputChange}
-                placeholder={placeholder}
-                widthSelect={widthSelect}
-            /> */}
             <SearchbarDropdownMulti
                 options={optionsMulti}
                 onInputChangeMulti={onInputChangeMulti}
                 placeholder={placeholder}
                 listSelected={optionsMultiTamp}
                 changeSetOptionsMultiTamp={changeSetOptionsMultiTamp}
+                widthSelect={widthSelect}
+                ellipsis={ellipsis}
+            />
+            <SearchbarDropdown
+                options={options}
+                onInputChange={onInputChange}
+                placeholder={placeholder}
                 widthSelect={widthSelect}
             />
         </div>

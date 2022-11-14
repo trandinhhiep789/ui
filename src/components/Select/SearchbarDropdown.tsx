@@ -11,6 +11,7 @@ interface SearchbarDropdownProps {
     onInputChange?: (e: any) => void
     /** placeholder */
     placeholder?: string
+    /** width Select ...px or ...% */
     widthSelect?: string
 }
 
