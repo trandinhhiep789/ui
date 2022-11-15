@@ -4,7 +4,7 @@ import SearchbarDropdownMulti from './SearchbarDropdownMulti'
 import './Select.css'
 
 interface SelectProps {
-    /** width Select ...px or ...% */
+    /** width Select ...px */
     widthSelect?: string
     /** defaultValue Select */
     defaultValue?: string
@@ -26,7 +26,7 @@ for (let i = 0; i < 10; i++) {
 const Select = ({
     defaultValue = '',
     placeholder = '--Vui lòng chọn--',
-    widthSelect = '300px',
+    widthSelect = '400px',
     ellipsis = false,
     handleChange = (value: string) => {},
     handleSearch = (value: string) => {},
@@ -81,7 +81,7 @@ const Select = ({
 
     return (
         <div {...props} style={{ width: widthSelect }}>
-            {/* <SearchbarDropdownMulti
+            <SearchbarDropdownMulti
                 options={optionsMulti}
                 onInputChangeMulti={onInputChangeMulti}
                 placeholder={placeholder}
@@ -89,14 +89,14 @@ const Select = ({
                 changeSetOptionsMultiTamp={changeSetOptionsMultiTamp}
                 widthSelect={widthSelect}
                 ellipsis={ellipsis}
-            /> */}
-            <SearchbarDropdown
+            />
+            {/* <SearchbarDropdown
                 options={options}
                 onInputChange={onInputChange}
                 onSearch={onSearch}
                 placeholder={placeholder}
                 widthSelect={widthSelect}
-            />
+            /> */}
         </div>
     )
 }

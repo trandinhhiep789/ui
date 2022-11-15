@@ -60,7 +60,7 @@ const SearchbarDropdownMulti = ({
     const onDeleteSelectEachOption = (item: any) => {
         setlistOptionSelected(listOptionSelected.filter((option: any) => option.value != item.value))
     }
-
+    console.log(parseInt('40px'.replace(/px/, '')) + 60 + 'px')
     return (
         <div {...props} style={{ width: widthSelect }}>
             <div className="cursor-pointer inputSelectMul">
@@ -68,8 +68,12 @@ const SearchbarDropdownMulti = ({
                 <div className="divFlexContentInputMulti">
                     {listOptionSelected &&
                         listOptionSelected.map((item: any, index: any) => (
-                            <div key={index} className="tagDefaultInSelect smallTag relative">
-                                {item.label}&ensp;&nbsp;
+                            <div
+                                key={index}
+                                className="tagDefaultInSelect smallTag relative"
+                                style={{ maxWidth: (parseInt(widthSelect.replace(/px/, '')) * 60) / 100 + 'px' }}
+                            >
+                                {item.label}&ensp;&nbsp;&nbsp;
                                 <span
                                     className="mt-0.5 p-1 absolute top-0 right-0 hover:bg-rose-400 rounded"
                                     onClick={() => onDeleteSelectEachOption(item)}
@@ -140,7 +144,7 @@ const SearchbarDropdownMulti = ({
 
                         return (
                             <div className="eachSelect eachSelectHover" key={index} onClick={() => onSelectEachOption(option)}>
-                                {option.label}
+                                <p className="ellipsis">{option.label}</p>
                             </div>
                         )
                     })}
