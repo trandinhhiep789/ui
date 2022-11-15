@@ -73,7 +73,7 @@ const SearchbarDropdownMulti = ({
                                 className="tagDefaultInSelect smallTag relative"
                                 style={{ maxWidth: (parseInt(widthSelect.replace(/px/, '')) * 60) / 100 + 'px' }}
                             >
-                                {item.label}&ensp;&nbsp;&nbsp;
+                                {item.label}&ensp;&nbsp;
                                 <span
                                     className="mt-0.5 p-1 absolute top-0 right-0 hover:bg-rose-400 rounded"
                                     onClick={() => onDeleteSelectEachOption(item)}
