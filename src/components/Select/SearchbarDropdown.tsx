@@ -9,6 +9,8 @@ interface SearchbarDropdownProps {
     options?: Array<any>
     /** onInputChange để callback ra ngoài trả data ra */
     onInputChange?: (e: any) => void
+    /** onSearch để callback ra ngoài trả data ra */
+    onSearch?: (e: any) => void
     /** placeholder */
     placeholder?: string
     /** width Select ...px or ...% */
@@ -18,12 +20,16 @@ interface SearchbarDropdownProps {
 const SearchbarDropdown = ({
     options = [],
     onInputChange = event => {},
+    onSearch = event => {},
     placeholder = '',
     widthSelect = '',
     ...props
 }: SearchbarDropdownProps) => {
     /** useRef để Dom tới list option, để lắng nghe click, để dựa vào đó set ẩn hiện list option */
     const ulRef: any = useRef()
+
+    /**  */
+    const ulRefShow: any = useRef()
 
     /** useRef để Dom tới input search select, để lắng nghe click, để dựa vào đó báo cho ulRef ẩn hiện cái list option*/
     const inputRef: any = useRef()
@@ -46,9 +52,28 @@ const SearchbarDropdown = ({
             }
         })
 
+        ulRefShow.current.addEventListener('click', (event: React.MouseEvent<HTMLElement, MouseEvent>) => {
+            inputRef.current.focus()
+            event.stopPropagation()
+            ulRef.current.className = 'contentSelect'
+            onInputChange(event)
+
+            let elem: any = document.querySelector('.selected')
+            if (elem) {
+                elem.scrollIntoView({ behavior: 'smooth' })
+            }
+        })
+
         window.addEventListener('click', event => {
             if (ulRef.current.className) {
                 ulRef.current.className = 'contentSelectHide'
+                inputRef.current.value = ''
+                const opSelected = {
+                    target: {
+                        value: undefined
+                    }
+                }
+                onInputChangeSearchbarDropdown(opSelected)
             }
         })
     }, [])
@@ -114,12 +139,8 @@ const SearchbarDropdown = ({
                 const optionLabel: any = document.querySelector('.inputSelectedKeyCode')
                 if (optionLabel) {
                     setInputSelected(optionLabel.innerText + '')
-                    const opSelected = {
-                        target: {
-                            value: optionLabel.getAttribute('data-select')
-                        }
-                    }
-                    onInputChange(opSelected)
+                    const value = optionLabel.getAttribute('data-select')
+                    onSearch(value)
                     inputRef.current.value = ''
                     if (ulRef.current.className) {
                         ulRef.current.className = 'contentSelectHide'
@@ -137,23 +158,14 @@ const SearchbarDropdown = ({
     }
 
     const onInputChangeSearchbarDropdown = (event: { target: { value: any } }) => {
-        if (event.target.value) {
-            setInputSelected('')
-        }
         onInputChange(event)
     }
 
     const onSelectEachOption = (label: string, value: string) => {
         setInputSelected(label)
-
-        const opSelected = {
-            target: {
-                value: value
-            }
-        }
-        onInputChange(opSelected)
-
         inputRef.current.value = ''
+
+        onSearch(value)
     }
 
     return (
@@ -163,7 +175,7 @@ const SearchbarDropdown = ({
                     id="search-bar"
                     type="text"
                     className="inputSelect"
-                    placeholder={inputSelected ? '' : placeholder}
+                    placeholder={inputRef && inputRef.current && inputRef.current.value ? '' : inputSelected ? '' : placeholder}
                     ref={inputRef}
                     onChange={onInputChangeSearchbarDropdown}
                     autoComplete="off"
@@ -173,10 +185,21 @@ const SearchbarDropdown = ({
                     role="combobox"
                     autoCapitalize="none"
                 />
-                <div className="absolute top-2 left-2.5">{inputSelected && inputSelected}</div>
+                <div className="absolute top-2 left-2.5 w-full" ref={ulRefShow}>
+                    <p className="ellipsisShow">{inputRef && inputRef.current && inputRef.current.value ? '' : inputSelected}</p>
+                </div>
                 {inputSelected && inputSelected != '' && (
                     <svg
-                        onClick={() => setInputSelected('')}
+                        onClick={() => {
+                            setInputSelected('')
+                            const opSelected = {
+                                target: {
+                                    value: ''
+                                }
+                            }
+                            onInputChange(opSelected)
+                            onSearch('')
+                        }}
                         className="absolute top-3.5 right-12 text-gray-300 hover:text-slate-700 h-4 w-4"
                     >
                         <FontAwesomeIcon icon={faXmark} />
@@ -203,7 +226,7 @@ const SearchbarDropdown = ({
                                 onMouseOver={() => onMouseOverOption(index)}
                                 data-select={option.value}
                             >
-                                {option.label}
+                                <p className="ellipsis">{option.label}</p>
                             </div>
                         )
                     })}

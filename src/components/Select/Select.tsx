@@ -14,10 +14,12 @@ interface SelectProps {
     ellipsis?: boolean
     /** handleChange log data ra ben ngoai */
     handleChange?: (value: string) => void
+    /** handleSearch log data ra ben ngoai */
+    handleSearch?: (value: string) => void
 }
 const defaultOptions: any = []
 for (let i = 0; i < 10; i++) {
-    defaultOptions.push({ value: `option ${i}`, label: `Option ${i}` })
+    defaultOptions.push({ value: `option ${i}`, label: `OptionOptionOptionOptionOptionOptionOptionOptionOption ${i}` })
     defaultOptions.push({ value: `suggesstion ${i}`, label: `Suggesstion ${i}` })
     defaultOptions.push({ value: `advice ${i}`, label: `Advice ${i}` })
 }
@@ -27,6 +29,7 @@ const Select = ({
     widthSelect = '300px',
     ellipsis = false,
     handleChange = (value: string) => {},
+    handleSearch = (value: string) => {},
     ...props
 }: SelectProps) => {
     /** Danh sách option */
@@ -35,13 +38,32 @@ const Select = ({
     const [optionsMulti, setOptionsMulti] = useState([])
     const [optionsMultiTamp, setOptionsMultiTamp]: any = useState([])
 
+    /*
+     *  Single select - START
+     */
+
     /** handleChange log data ra ben ngoai */
     const onInputChange = (event: { target: { value: any } }) => {
+        if (event.target.value == undefined) {
+            event.target.value = ''
+        }
         setOptions(defaultOptions.filter((option: any | any[]) => option.label.includes(event.target.value)))
         if (event.target.value) {
             handleChange(event.target.value)
         }
     }
+
+    /** handleSearch log data ra ben ngoai */
+    const onSearch = (value: any) => {
+        if (value || value === '') {
+            console.log('handleSearch value ', value)
+            handleSearch(value)
+        }
+    }
+
+    /*
+     *  Single select - END
+     */
 
     const onInputChangeMulti = (event: { target: { value: any } }) => {
         if (event.target.value == undefined) {
@@ -59,7 +81,7 @@ const Select = ({
 
     return (
         <div {...props} style={{ width: widthSelect }}>
-            <SearchbarDropdownMulti
+            {/* <SearchbarDropdownMulti
                 options={optionsMulti}
                 onInputChangeMulti={onInputChangeMulti}
                 placeholder={placeholder}
@@ -67,10 +89,11 @@ const Select = ({
                 changeSetOptionsMultiTamp={changeSetOptionsMultiTamp}
                 widthSelect={widthSelect}
                 ellipsis={ellipsis}
-            />
+            /> */}
             <SearchbarDropdown
                 options={options}
                 onInputChange={onInputChange}
+                onSearch={onSearch}
                 placeholder={placeholder}
                 widthSelect={widthSelect}
             />
