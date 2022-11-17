@@ -52,7 +52,7 @@
 }
 
 .ellipsis {
-    width: 100%;
+    width: 75%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

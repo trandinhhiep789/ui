@@ -3,6 +3,11 @@ import SearchbarDropdown from './SearchbarDropdown'
 import SearchbarDropdownMulti from './SearchbarDropdownMulti'
 import './Select.css'
 
+interface optionsls {
+    value: string
+    label: string
+}
+
 interface SelectProps {
     /** width Select ...px */
     widthSelect?: string
@@ -10,12 +15,16 @@ interface SelectProps {
     defaultValue?: string
     /** placeholder Select */
     placeholder?: string
+    /** optionsls Select */
+    optionsls?: optionsls[]
     /** giới hạn trên một dòng */
     ellipsis?: boolean
+    /** chọn nhiều */
+    isMulti?: boolean
     /** handleChange log data ra ben ngoai */
     handleChange?: (value: string) => void
     /** handleSearch log data ra ben ngoai */
-    handleSearch?: (value: string) => void
+    handleSearch?: (value: any) => void
 }
 const defaultOptions: any = []
 for (let i = 0; i < 10; i++) {
@@ -26,17 +35,18 @@ for (let i = 0; i < 10; i++) {
 const Select = ({
     defaultValue = '',
     placeholder = '--Vui lòng chọn--',
-    widthSelect = '400px',
+    widthSelect = '300px',
     ellipsis = false,
+    optionsls = defaultOptions,
+    isMulti = false,
     handleChange = (value: string) => {},
-    handleSearch = (value: string) => {},
+    handleSearch = (value: any) => {},
     ...props
 }: SelectProps) => {
     /** Danh sách option */
-    const [options, setOptions] = useState([])
+    const [options, setOptions]: any = useState([])
 
-    const [optionsMulti, setOptionsMulti] = useState([])
-    const [optionsMultiTamp, setOptionsMultiTamp]: any = useState([])
+    const [optionsMulti, setOptionsMulti]: any = useState([])
 
     /*
      *  Single select - START
@@ -47,16 +57,15 @@ const Select = ({
         if (event.target.value == undefined) {
             event.target.value = ''
         }
-        setOptions(defaultOptions.filter((option: any | any[]) => option.label.includes(event.target.value)))
+        optionsls && setOptions(optionsls.filter((option: optionsls) => option.label.includes(event.target.value)))
         if (event.target.value) {
             handleChange(event.target.value)
         }
     }
 
     /** handleSearch log data ra ben ngoai */
-    const onSearch = (value: any) => {
+    const onSearch = (value: string) => {
         if (value || value === '') {
-            console.log('handleSearch value ', value)
             handleSearch(value)
         }
     }
@@ -65,38 +74,49 @@ const Select = ({
      *  Single select - END
      */
 
+    /*
+     *  Multi select - START
+     */
+
     const onInputChangeMulti = (event: { target: { value: any } }) => {
         if (event.target.value == undefined) {
             event.target.value = ''
         }
-        setOptionsMulti(defaultOptions.filter((option: any | any[]) => option.label.includes(event.target.value)))
+        optionsls && setOptionsMulti(optionsls.filter((option: optionsls) => option.label.includes(event.target.value)))
         if (event.target.value) {
             handleChange(event.target.value)
         }
     }
 
-    const changeSetOptionsMultiTamp = (value: any) => {
-        setOptionsMultiTamp(optionsMultiTamp.filter((option: string | any[]) => option != value))
+    /** handleSearch log data ra ben ngoai */
+    const onSearchMulti = (value: string[]) => {
+        handleSearch(value)
     }
+
+    /*
+     *  Multi select - END
+     */
 
     return (
         <div {...props} style={{ width: widthSelect }}>
-            <SearchbarDropdownMulti
-                options={optionsMulti}
-                onInputChangeMulti={onInputChangeMulti}
-                placeholder={placeholder}
-                listSelected={optionsMultiTamp}
-                changeSetOptionsMultiTamp={changeSetOptionsMultiTamp}
-                widthSelect={widthSelect}
-                ellipsis={ellipsis}
-            />
-            {/* <SearchbarDropdown
-                options={options}
-                onInputChange={onInputChange}
-                onSearch={onSearch}
-                placeholder={placeholder}
-                widthSelect={widthSelect}
-            /> */}
+            {isMulti ? (
+                <SearchbarDropdownMulti
+                    options={optionsMulti}
+                    onInputChangeMulti={onInputChangeMulti}
+                    placeholder={placeholder}
+                    widthSelect={widthSelect}
+                    ellipsis={ellipsis}
+                    onSearchMulti={onSearchMulti}
+                />
+            ) : (
+                <SearchbarDropdown
+                    options={options}
+                    onInputChange={onInputChange}
+                    onSearch={onSearch}
+                    placeholder={placeholder}
+                    widthSelect={widthSelect}
+                />
+            )}
         </div>
     )
 }

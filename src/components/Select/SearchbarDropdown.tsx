@@ -65,7 +65,7 @@ const SearchbarDropdown = ({
         })
 
         window.addEventListener('click', event => {
-            if (ulRef.current.className) {
+            if (ulRef && ulRef.current && ulRef.current.className) {
                 ulRef.current.className = 'contentSelectHide'
                 inputRef.current.value = ''
                 const opSelected = {
