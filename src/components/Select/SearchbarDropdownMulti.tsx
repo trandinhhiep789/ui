@@ -27,7 +27,7 @@ const SearchbarDropdownMulti = ({
     onSearchMulti = event => {},
     placeholder = '',
     widthSelect = '',
-    ellipsis = false,
+    ellipsis,
     ...props
 }: SearchbarDropdownMultiProps) => {
     const ulRef: any = useRef()
@@ -79,11 +79,13 @@ const SearchbarDropdownMulti = ({
     const onSelectEachOption = (item: any) => {
         setlistOptionSelected([...listOptionSelected, item])
         inputRef.current.value = ''
+        setValue('')
     }
 
     const onCancelSelectEachOption = (item: any) => {
         setlistOptionSelected(listOptionSelected.filter((option: any) => option.value != item.value))
         inputRef.current.value = ''
+        setValue('')
     }
 
     const onDeleteSelectEachOption = (item: any) => {
@@ -95,7 +97,7 @@ const SearchbarDropdownMulti = ({
                 <div ref={inputBorderRef} className="classNameToClickOpenListOption"></div>
 
                 {ellipsis ? (
-                    <SearchbarDropdownFlexWrap
+                    <SearchbarDropdownEllipsis
                         listOptionSelected={listOptionSelected}
                         isExceeding={isExceeding}
                         isExceedingIndex={isExceedingIndex}
@@ -110,7 +112,7 @@ const SearchbarDropdownMulti = ({
                         inputRef={inputRef}
                     />
                 ) : (
-                    <SearchbarDropdownEllipsis
+                    <SearchbarDropdownFlexWrap
                         listOptionSelected={listOptionSelected}
                         isExceeding={isExceeding}
                         isExceedingIndex={isExceedingIndex}

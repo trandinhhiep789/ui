@@ -57,7 +57,10 @@ const Select = ({
         if (event.target.value == undefined) {
             event.target.value = ''
         }
-        optionsls && setOptions(optionsls.filter((option: optionsls) => option.label.includes(event.target.value)))
+        optionsls &&
+            setOptions(
+                optionsls.filter((option: optionsls) => option.label.toLowerCase().includes(event.target.value.toLowerCase()))
+            )
         if (event.target.value) {
             handleChange(event.target.value)
         }
@@ -82,7 +85,10 @@ const Select = ({
         if (event.target.value == undefined) {
             event.target.value = ''
         }
-        optionsls && setOptionsMulti(optionsls.filter((option: optionsls) => option.label.includes(event.target.value)))
+        optionsls &&
+            setOptionsMulti(
+                optionsls.filter((option: optionsls) => option.label.toLowerCase().includes(event.target.value.toLowerCase()))
+            )
         if (event.target.value) {
             handleChange(event.target.value)
         }
