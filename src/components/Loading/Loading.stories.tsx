@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof Loading> = args => <Loading {...args} />
 
-export const DefaultModal = Template.bind({})
-DefaultModal.args = {}
+export const DefaultLoading = Template.bind({})
+DefaultLoading.args = {}

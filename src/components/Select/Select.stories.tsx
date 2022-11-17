@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof Select> = args => <Select {...args} />
 
-export const DefaultModal = Template.bind({})
-DefaultModal.args = {}
+export const DefaulSelect = Template.bind({})
+DefaulSelect.args = {}

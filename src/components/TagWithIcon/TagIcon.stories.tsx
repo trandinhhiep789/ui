@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof TagIcon> = args => <TagIcon {...args} />
 
-export const DefaultModal = Template.bind({})
-DefaultModal.args = {}
+export const DefaultTagWithIcon = Template.bind({})
+DefaultTagWithIcon.args = {}

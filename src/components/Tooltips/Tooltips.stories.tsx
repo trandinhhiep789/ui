@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof Tooltips> = args => <Tooltips {...args} />
 
-export const DefaultModal = Template.bind({})
-DefaultModal.args = {}
+export const DefaultTooltips = Template.bind({})
+DefaultTooltips.args = {}

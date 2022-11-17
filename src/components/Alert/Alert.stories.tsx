@@ -11,5 +11,5 @@ export default {
 
 const Template: ComponentStory<typeof Alert> = args => <Alert {...args} />
 
-export const DefaultModal = Template.bind({})
-DefaultModal.args = {}
+export const DefaultAlert = Template.bind({})
+DefaultAlert.args = {}

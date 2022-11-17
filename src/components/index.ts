@@ -14,3 +14,4 @@ export { default as Tooltips } from './Tooltips'
 export { default as Select } from './Select'
 
 export { default as IconButton } from './IconButton'
+export { default as DatePicker } from './DatePicker'

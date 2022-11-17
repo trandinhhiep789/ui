@@ -1,0 +1,88 @@
+/* typeOf Alert */
+.alert-success {
+    @apply p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800;
+}
+.alert-warning {
+    @apply p-4 mb-4 text-sm text-yellow-700 bg-yellow-100 rounded-lg dark:bg-yellow-200 dark:text-yellow-800;
+}
+.alert-danger {
+    @apply p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800;
+}
+.alert-info {
+    @apply p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800;
+}
+.alert-dark {
+    @apply p-4 text-sm text-gray-700 bg-gray-100 rounded-lg dark:bg-gray-700 dark:text-gray-300;
+}
+
+/* with content */
+
+/* success alert */
+.alert--success__border {
+    @apply p-4 mb-4 border border-green-300 rounded-lg bg-green-50 dark:bg-green-200;
+}
+.alert--success__icon {
+    @apply w-4 h-4 mr-2 mb-0.5 text-green-700 dark:text-green-800;
+}
+.alert--success__title {
+    @apply text-lg font-medium text-green-700 dark:text-green-800;
+}
+.alert--success__content {
+    @apply mt-2 mb-4 text-sm text-left font-light text-green-700 dark:text-green-800;
+}
+
+/* danger alert */
+.alert--danger__border {
+    @apply p-4 mb-4 border border-red-300 rounded-lg bg-red-50 dark:bg-red-200;
+}
+.alert--danger__icon {
+    @apply w-4 h-4 mr-2 mb-0.5 text-red-900 dark:text-red-800;
+}
+.alert--danger__title {
+    @apply text-lg font-medium text-red-900 dark:text-red-800;
+}
+.alert--danger__content {
+    @apply mt-2 mb-4 text-sm text-left font-light text-red-900 dark:text-red-800;
+}
+
+/* dark alert */
+.alert--dark__border {
+    @apply p-4 border border-gray-300 rounded-lg bg-gray-50 dark:border-gray-600 dark:bg-gray-700;
+}
+.alert--dark__icon {
+    @apply w-4 h-4 mr-2 mb-0.5 text-gray-700 dark:text-gray-300;
+}
+.alert--dark__title {
+    @apply text-lg font-medium text-gray-700 dark:text-gray-300;
+}
+.alert--dark__content {
+    @apply mt-2 mb-4 text-sm text-left font-light text-gray-700 dark:text-gray-300;
+}
+
+/* info alert */
+.alert--info__border {
+    @apply p-4 mb-4 border border-blue-300 rounded-lg bg-blue-50 dark:bg-blue-300;
+}
+.alert--info__icon {
+    @apply w-4 h-4 mr-2 mb-0.5 text-blue-900;
+}
+.alert--info__title {
+    @apply text-lg font-medium text-blue-900;
+}
+.alert--info__content {
+    @apply mt-2 mb-4 text-sm text-left font-light text-blue-900;
+}
+
+/* warning alert */
+.alert--warning__border {
+    @apply p-4 mb-4 border border-yellow-300 rounded-lg bg-yellow-50 dark:bg-yellow-200;
+}
+.alert--warning__icon {
+    @apply w-4 h-4 mr-2 mb-0.5 text-yellow-700 dark:text-yellow-800;
+}
+.alert--warning__title {
+    @apply text-lg font-medium text-yellow-700 dark:text-yellow-800;
+}
+.alert--warning__content {
+    @apply mt-2 mb-4 text-sm text-left font-light text-yellow-700 dark:text-yellow-800;
+}
