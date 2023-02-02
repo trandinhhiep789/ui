@@ -15,7 +15,6 @@ interface DatePickerProps {
 
 const DatePicker = ({ picker, widthSelect = '', ...props }: DatePickerProps) => {
     const inputRef: any = useRef()
-    const ulRef: any = useRef()
 
     const [currentDate, setCurrentDate] = useState(new Date())
     const [dateChoose, setDateChoose] = useState('')
@@ -23,27 +22,22 @@ const DatePicker = ({ picker, widthSelect = '', ...props }: DatePickerProps) => 
 
     const handleClick = () => {
         if (!showDateList) {
-            console.log('abc')
             document.addEventListener('click', handleOutsideClick)
         } else {
             document.removeEventListener('click', handleOutsideClick)
         }
 
-        // setShowDateList(!showDateList)
         setShowDateList(!showDateList)
     }
 
     const handleOutsideClick = (e: any) => {
         if (inputRef && inputRef.current) {
             if (!inputRef.current.contains(e.target)) {
+                console.log('hinde')
                 handleClick()
             }
         }
     }
-
-    // useEffect(() => {
-    //     return document.removeEventListener('click', handleOutsideClick)
-    // }, [])
 
     useEffect(() => {
         const stringDate = format(currentDate, 'dd/MM/yyyy', { locale: vi })
@@ -58,9 +52,11 @@ const DatePicker = ({ picker, widthSelect = '', ...props }: DatePickerProps) => 
                     <FontAwesomeIcon icon={faCalendarDays} />
                 </svg>
 
-                <div ref={ulRef} className={showDateList ? 'contentDate' : 'contentDateHide'} style={{ width: widthSelect }}>
-                    <Calendar value={currentDate} onChange={setCurrentDate} />
-                </div>
+                {showDateList && (
+                    <div className={showDateList ? 'contentDate' : 'contentDateHide'} style={{ width: widthSelect }}>
+                        <Calendar value={currentDate} onChange={setCurrentDate} />
+                    </div>
+                )}
             </div>
         </div>
     )
