@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
-import Button from '../Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
-import { ButtonProps } from '../Button/Button'
 import './DatePicker.css'
 import Calendar from './Calendar'
 import { format } from 'date-fns'
@@ -11,37 +9,50 @@ interface DatePickerProps {
     /** loại date picker */
     picker?: 'week' | 'month' | 'year'
     widthSelect?: string
+    /** onChange để callback ra ngoài trả data ra */
+    onChange?: (date: Date, dateString: any) => void
 }
 
-const DatePicker = ({ picker, widthSelect = '', ...props }: DatePickerProps) => {
+const DatePicker = ({ picker, widthSelect = '', onChange = event => {}, ...props }: DatePickerProps) => {
     const inputRef: any = useRef()
+    const showDateListRef: any = useRef()
 
     const [currentDate, setCurrentDate] = useState(new Date())
     const [dateChoose, setDateChoose] = useState('')
     const [showDateList, setShowDateList] = useState(false)
 
+    const _setShowDateList = (data: any) => {
+        showDateListRef.current = data
+        setShowDateList(data)
+    }
+
     const handleClick = () => {
-        if (!showDateList) {
+        if (!showDateListRef.current) {
             document.addEventListener('click', handleOutsideClick)
+            _setShowDateList(true)
         } else {
             document.removeEventListener('click', handleOutsideClick)
+            _setShowDateList(false)
         }
-
-        setShowDateList(!showDateList)
     }
 
     const handleOutsideClick = (e: any) => {
         if (inputRef && inputRef.current) {
             if (!inputRef.current.contains(e.target)) {
-                console.log('hinde')
                 handleClick()
             }
         }
     }
 
+    const OnchangeCalendar = (date: any, dateString: any) => {
+        onChange(date, dateString)
+    }
+
     useEffect(() => {
         const stringDate = format(currentDate, 'dd/MM/yyyy', { locale: vi })
         setDateChoose(stringDate)
+
+        OnchangeCalendar(stringDate, currentDate)
     }, [currentDate])
 
     return (
@@ -53,7 +64,10 @@ const DatePicker = ({ picker, widthSelect = '', ...props }: DatePickerProps) => 
                 </svg>
 
                 {showDateList && (
-                    <div className={showDateList ? 'contentDate' : 'contentDateHide'} style={{ width: widthSelect }}>
+                    <div
+                        className={showDateList ? 'contentDate w-[300px] boxShadowDatePicker' : 'contentDateHide'}
+                        style={{ width: widthSelect }}
+                    >
                         <Calendar value={currentDate} onChange={setCurrentDate} />
                     </div>
                 )}

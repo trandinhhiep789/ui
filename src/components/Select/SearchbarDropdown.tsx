@@ -31,7 +31,7 @@ const SearchbarDropdown = ({
     /**  */
     const ulRefShow: any = useRef()
 
-    /** useRef để Dom tới input search select, để lắng nghe click, để dựa vào đó báo cho ulRef ẩn hiện cái list option*/
+    /** useRef để Dom tới input search select, để lắng nghe click, để dựa vào đó báo cho ulRef ẩn hiện cái list option */
     const inputRef: any = useRef()
 
     /** inputSelected để hiện option hiện đang được chọn trong placeholder*/

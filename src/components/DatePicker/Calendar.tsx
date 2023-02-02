@@ -1,11 +1,14 @@
 import { add, differenceInDays, endOfMonth, format, setDate, startOfMonth, sub } from 'date-fns'
 import vi from 'date-fns/locale/vi'
 import React from 'react'
+import clsx from 'clsx'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronLeft, faChevronRight, faAnglesRight, faAnglesLeft } from '@fortawesome/free-solid-svg-icons'
 
 import Cell from './Cell'
 
 // const weeks = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-const weeks = ['CN', 'Thứ 2', 'Thứ 3', 'Thứ 4', 'Thứ 5', 'Thứ 6', 'Thứ 7']
+const weeks = ['CN', 'T2', 'T3', 'T4', 'T5', 'T6', 'T7']
 
 type Props = {
     value?: Date
@@ -36,20 +39,39 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
     const handleClickDate = (index: number, dateString: any) => {
         const date = setDate(value, index)
         onChange(date)
-        console.log('dateString ', dateString)
     }
 
     return (
-        <div className="w-[400px]" style={{ margin: '0 auto' }}>
-            <div className="grid grid-cols-7 items-center justify-center text-center">
-                <Cell onClick={prevYear}>{'<<'}</Cell>
-                <Cell onClick={prevMonth}>{'<'}</Cell>
-                <Cell className="col-span-3 font-bold">{format(value, 'LLLL yyyy', { locale: vi })}</Cell>
-                <Cell onClick={nextMonth}>{'>'}</Cell>
-                <Cell onClick={nextYear}>{'>>'}</Cell>
+        <div className="w-[300px]">
+            <div className="mt-1 grid grid-cols-7 items-center justify-center text-center">
+                <Cell onClick={prevYear}>
+                    <svg className="text-gray-400 h-4 w-4">
+                        <FontAwesomeIcon icon={faAnglesLeft} />
+                    </svg>
+                </Cell>
+                <Cell onClick={prevMonth}>
+                    <svg className="text-gray-400 h-4 w-4">
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                    </svg>
+                </Cell>
+
+                <div className={clsx('col-span-3 text-base h-10 flex items-center justify-center select-none transition-colors')}>
+                    {format(value, 'LLLL yyyy', { locale: vi })}
+                </div>
+
+                <Cell onClick={prevMonth}>
+                    <svg className="text-gray-400 h-4 w-4">
+                        <FontAwesomeIcon icon={faChevronRight} />
+                    </svg>
+                </Cell>
+                <Cell onClick={nextYear}>
+                    <svg className="text-gray-400 h-4 w-4">
+                        <FontAwesomeIcon icon={faAnglesRight} />
+                    </svg>
+                </Cell>
 
                 {weeks.map((week, index) => (
-                    <Cell key={index} className="text-xs font-bold uppercase">
+                    <Cell key={index} className="text-sm uppercase">
                         {week}
                     </Cell>
                 ))}
@@ -69,6 +91,7 @@ const Calendar: React.FC<Props> = ({ value = new Date(), onChange }) => {
                             onClick={() => {
                                 handleClickDate(date, value)
                             }}
+                            className="text-sm"
                         >
                             {date}
                         </Cell>

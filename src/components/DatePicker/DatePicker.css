@@ -15,9 +15,12 @@
 }
 
 .contentDate {
-    @apply text-center overflow-x-auto block rounded-lg mt-2 w-full absolute top-10 bg-white !important;
-    z-index: 1;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+    @apply text-center overflow-x-auto block rounded-lg mt-2 absolute top-10 bg-white !important;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important; */
+}
+
+.boxShadowDatePicker {
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
 .contentDateHide {
